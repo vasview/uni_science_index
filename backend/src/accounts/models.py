@@ -68,7 +68,7 @@ class ScientificProfile(models.Model):
 
     class Meta:
         verbose_name = 'Профиль пользователя в индексируемых базах'
-        verbose_name_plural = 'Профили пользовател в индексируемых базах'
+        verbose_name_plural = 'Профили пользователя в индексируемых базах'
         ordering = ['id']
 
     def __str__(self):
