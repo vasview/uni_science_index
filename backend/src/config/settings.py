@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "phonenumber_field",
     'accounts',
     'registers',
+    'organization',
 ]
 
 MIDDLEWARE = [
