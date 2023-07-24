@@ -1,0 +1,23 @@
+[
+    {
+        "model": "registers.academictitle",
+        "pk": 1,
+        "fields": {
+            "name": "доцент"
+        }
+    },
+    {
+        "model": "registers.academictitle",
+        "pk": 2,
+        "fields": {
+            "name": "профессор"
+        }
+    },
+    {
+        "model": "registers.academictitle",
+        "pk": 3,
+        "fields": {
+            "name": "академик"
+        }
+    }
+]
