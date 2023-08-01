@@ -7,6 +7,7 @@ PYTHON=python
 PIP = pip
 MANAGE = ./manage.py
 APP_ACCOUNT = accounts
+APP_ACTIVITIES = activities
 APP_ORGANIZATION = organization
 APP_REGISTER = registers
 FIXTURE = ./config/fixtures
@@ -26,11 +27,13 @@ migrations:
 	${PYTHON} ${MANAGE} makemigrations ${APP_ACCOUNT}
 	${PYTHON} ${MANAGE} makemigrations ${APP_ORGANIZATION}
 	${PYTHON} ${MANAGE} makemigrations ${APP_REGISTER}
+	${PYTHON} ${MANAGE} makemigrations ${APP_ACTIVITIES}
 
 inspect_migration:
 	${PYTHON} ${MANAGE} sqlmigrate ${APP_ACCOUNT}
 	${PYTHON} ${MANAGE} sqlmigrate ${APP_ORGANIZATION}
 	${PYTHON} ${MANAGE} sqlmigrate ${APP_REGISTER}
+	${PYTHON} ${MANAGE} sqlmigrate ${APP_ACTIVITIES}
 	
 migrate:
 	${PYTHON} ${MANAGE} migrate
@@ -39,6 +42,7 @@ rollback_all_migrations:
 	${PYTHON} ${MANAGE} migrate ${APP_ACCOUNT} zero
 	${PYTHON} ${MANAGE} migrate ${APP_ORGANIZATION} zero
 	${PYTHON} ${MANAGE} migrate ${APP_REGISTER} zero
+	${PYTHON} ${MANAGE} migrate ${APP_ACTIVITIES} zero
 
 delete_migrations:
 	find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
