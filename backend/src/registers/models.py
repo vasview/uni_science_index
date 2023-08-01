@@ -78,5 +78,29 @@ class AcademicYear(models.Model):
         ordering = ['id']
 
     def __str__(self):
-        return self.name    
-    
+        return self.name
+
+class Country(models.Model):
+    code = models.CharField(max_length=10, blank=False, null=False)
+    name = models.CharField(max_length=100, blank=False, null=False)
+
+    class Meta:
+        verbose_name = 'Страна'
+        verbose_name_plural = 'Справочник стран'
+        ordering = ['id']
+
+    def __str__(self):
+        return self.name
+
+class City(models.Model):
+    county = models.ForeignKey(Country, on_delete=models.CASCADE)
+    code = models.CharField(max_length=10, blank=False, null=False)
+    name = models.CharField(max_length=100, blank=False, null=False)
+
+    class Meta:
+        verbose_name = 'Город'
+        verbose_name_plural = 'Справочник городов'
+        ordering = ['id']
+
+    def __str__(self):
+        return self.name
