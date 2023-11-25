@@ -220,3 +220,6 @@ media/
 
 # vscode configuration
 .vscode/
+
+#react dependencies
+node_modules
