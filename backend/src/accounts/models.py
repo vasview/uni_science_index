@@ -14,7 +14,7 @@ class Gender(models.TextChoices):
 
 class User(AbstractBaseUser, PermissionsMixin):
     email           = models.EmailField(_("email_address"), max_length=255, unique=True)
-    user_name       = models.CharField(_('user_name'),max_length=150, unique=True)
+    user_name       = models.CharField(_('user_name'),max_length=150, blank=True, null=True)
     is_active       = models.BooleanField(default=False)    # can login
     is_staff        = models.BooleanField(default=False)    # staff user not admin
     is_superuser    = models.BooleanField(default=False)    # superuser
