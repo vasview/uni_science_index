@@ -1,5 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
 import Footer from './footer';
 import Header from './header';
 

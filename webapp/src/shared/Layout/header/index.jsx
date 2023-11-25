@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+// import { Link, useNavigate } from "react-router-dom";
 import { AppBar, Toolbar, IconButton, Typography, Tooltip,
          Stack, Button, Grid, Container, Menu, MenuItem } from "@mui/material";
 import ArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -9,6 +9,11 @@ import './navbar.css'
 import Logo from './logo';
 
 function Header() {
+  // handle clicks
+  // const navigate = useNavigate();
+  // const handleRoutes = (path) =>{
+  //   navigate(path)
+  // }
   // lecture submenu
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
@@ -87,6 +92,7 @@ function Header() {
               color='inherit' 
               size="medium" 
               style={{fontSize: 20, textTransform: 'none'}}
+              href='/my_employees'
             >
               Сотрудники
             </Button>
@@ -196,10 +202,10 @@ function Header() {
               horizontal: 'right',
             }}
           >
-            <MenuItem sx={{fontSize: 20}}>
+            <MenuItem sx={{fontSize: 20}} component={'a'} href='/my_guest_lectures'>
               Гостевые лекции и стажировки
             </MenuItem>
-            <MenuItem sx={{fontSize: 20}}>
+            <MenuItem sx={{fontSize: 20}} component={'a'} href='/my_conferences'>
               Семинары и конференции
             </MenuItem>
           </Menu>
@@ -221,19 +227,39 @@ function Header() {
               horizontal: 'right',
             }}
           >
-            <MenuItem sx={{fontSize: 20}}>
+            <MenuItem 
+              sx={{fontSize: 20}}
+              component={'a'}
+              href="/my_dissertations"
+            > 
               Защита диссертации
             </MenuItem>
-            <MenuItem sx={{fontSize: 20}}>
+            <MenuItem 
+              sx={{fontSize: 20}}
+              component={'a'}
+              href="/my_postgraduates"
+            >
               Руководство докторантами и аспирантами
             </MenuItem>
-            <MenuItem sx={{fontSize: 20}}>
+            <MenuItem 
+              sx={{fontSize: 20}}
+              component={'a'}
+              href="/my_resarch_management"
+            >
               Руководство НИРС
             </MenuItem>
-            <MenuItem sx={{fontSize: 20}}>
+            <MenuItem 
+              sx={{fontSize: 20}}
+              component={'a'}
+              href="/my_resarch_works"
+            >
               Научно-исследовательская работы
             </MenuItem>
-            <MenuItem sx={{fontSize: 20}}>
+            <MenuItem 
+              sx={{fontSize: 20}}
+              component={'a'}
+              href="/my_resarch_summary"
+            >
               Сводка по НИР
             </MenuItem>
           </Menu>
@@ -255,10 +281,18 @@ function Header() {
               horizontal: 'right',
             }}
           >
-            <MenuItem sx={{fontSize: 20}}>
+            <MenuItem 
+              sx={{fontSize: 20}} 
+              component={'a'} 
+              href='/my_research_publications'
+            > 
               Публикации по итогам НИРС
             </MenuItem>
-            <MenuItem sx={{fontSize: 20}}>
+            <MenuItem 
+              sx={{fontSize: 20}} 
+              component={'a'} 
+              href='/my_monograph_publications'
+            > 
               Публикация монографии
             </MenuItem>
           </Menu>
@@ -280,13 +314,13 @@ function Header() {
               horizontal: 'right',
             }}
           >
-            <MenuItem sx={{fontSize: 20}}>
+            <MenuItem sx={{fontSize: 20}} component={'a'} href='/my_copyright_certificates'>
               Получение авторских свидетельств
             </MenuItem>
-            <MenuItem sx={{fontSize: 20}}>
+            <MenuItem sx={{fontSize: 20}} component={'a'} href='/my_inventions'>
               Заявка на изобретение
             </MenuItem>
-            <MenuItem sx={{fontSize: 20}}>
+            <MenuItem sx={{fontSize: 20}} component={'a'} href='/my_patents'>
               Патенты на изобретение
             </MenuItem>
           </Menu>
@@ -307,11 +341,11 @@ function Header() {
               vertical: 'top',
               horizontal: 'right',
             }}
-          >
-            <MenuItem sx={{fontSize: 20}}>
+          > 
+            <MenuItem sx={{fontSize: 20}} component={'a'} href='/my_sci_profile'>
               Научный профиль
             </MenuItem>
-            <MenuItem sx={{fontSize: 20}}>
+            <MenuItem sx={{fontSize: 20}} component={'a'} href='/my_profile'>
               Настройки профиля
             </MenuItem>
           </Menu>
