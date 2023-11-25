@@ -1,0 +1,42 @@
+.wlcm_card_square {
+	min-height: 378px;
+	width: 310px;	
+	/* background: rgba(10, 98, 191, 0.7); */
+  /* background: rgba(237, 239, 241, 0.7); */
+  border: 2px dashed rgba(10, 98, 191, 0.7);
+	border-radius: 25px;
+	text-align: center;
+	color: rgba(10, 98, 191, 0.7);
+}
+
+.wlcm_card_square:hover {
+  color: white;
+}
+
+.wlcm_card_box__link {
+	text-decoration: none;
+}
+
+.wlcm_card_box__link:hover {
+	/*height: 100%;*/
+  color: white;
+	width: auto;
+  border-radius: 25px;
+	/* background: rgba(0, 0, 0, 0.45);
+   */
+  background: rgba(10, 98, 191, 0.7);
+}
+
+.wwlcm_card_square__title {
+	display: block;
+}
+
+.wlcm_card_square__icon {
+	height: 121px;
+	width: 121px;
+}
+
+.wlcm_card_square__icon > img {
+	height: 100%;
+	width:  auto;
+}

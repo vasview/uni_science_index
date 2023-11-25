@@ -1,0 +1,15 @@
+.footer {
+    width: 100%;
+    min-height: 80px;
+    background: #0A62BF;
+    text-align: center;
+    color: white;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1366px;
+    height: auto; 
+    padding: 0 15px;
+    /* position: static; */
+}
