@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import { setCredentials } from '../features/auth/authSlice';
 import { useLoginMutation } from '../features/auth/authApiSlice';
 
+import { Loading } from '../components/UI/Loading';
+
 const Login = () => {
   const emailRef = useRef()
   const errRef = useRef()
@@ -41,14 +43,14 @@ const Login = () => {
       setEmail('')
       setPassword('')
       // is the user authentiated? redirect to home page
-      navigate('/home')
+      navigate('/dashboard')
     } catch (err) {
-      if (!err?.response) {
+      if (!err?.status) {
         setErrMsg('No Server Response');
-      } else if (err.response?.status === 400) {
+      } else if (err.status === 400) {
         setErrMsg('Missing Username or Password');
-      } else if (err.response?.status === 401) {
-        setErrMsg('Unauthorized');
+      } else if (err.status === 401) {
+        setErrMsg(err.data.detail);
       } else {
         setErrMsg('Login failed');
       }
@@ -56,14 +58,20 @@ const Login = () => {
     }
   };
 
-  return (
-    <div className='container mt-5 col-md-4'>
+  const content = isLoading ? 
+    ( <div className='container pt-5 col-md-3'>
+        <Loading />
+      </div> 
+    )
+    : (
+    <div className='container pt-5 col-md-3'>
+      <p ref={errRef} className={errMsg ? 'errmsg' : 'offscreen'} aria-live='assertive'>{errMsg}</p>
       <h1>Вход в приложение</h1>
-      <p>Войдите в свой аккаунт</p>
+      <p className='fs-5'>Войдите в свой аккаунт</p>
       <form onSubmit={HandleSubmit}>
-        <div className='form-group mb-1'>
+        <div className='form-group mb-3'>
           <input 
-            className='form-control'
+            className='form-control fs-4'
             type="email"
             id='email'
             placeholder='Ваш email'
@@ -76,7 +84,7 @@ const Login = () => {
         </div>
         <div className='form-group mb-3'>
           <input 
-            className='form-control'
+            className='form-control fs-4'
             type="password"
             id='password'
             name='password'
@@ -87,15 +95,17 @@ const Login = () => {
             required
           />
         </div>
-        <button className='btn btn-primary btn-lg w-100' type='submit'>
+        <button className='btn btn-primary btn-lg w-100 fs-4' type='submit'>
           Войти
         </button>
       </form>
-      <p className='mt-3'>
+      <p className='mt-3 fs-5'>
         Забыли пароль? <Link to='/password/reset'>Сброс пароля</Link>
       </p>
     </div>
-  );
+  )
+
+return content
 };
 
 export default Login;
