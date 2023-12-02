@@ -1,0 +1,62 @@
+.employee_title {
+  display: inline-block;
+}
+
+.btn_add_employee {
+  margin-top: 1rem;
+  display: inline-block;
+  font-size: larger;
+}
+
+.btn-block {
+  text-align: end;
+}
+
+table {
+  border:1px solid black;
+}
+table th {
+  border-bottom:1px solid black;
+  font-size: 12px;
+}
+
+/* .vText {
+  transform: rotate(270deg);
+  display: block;
+  text-wrap: nowrap;
+  border: 1px solid red;
+} */
+
+th.rotate {
+  height:230px;
+  white-space: nowrap;
+  position:relative;
+}
+
+th.rotate > div {
+  transform: rotate(270deg);
+  position:absolute;
+  left:0;
+  right:0;
+  bottom: 20px;
+  margin:auto;
+  font-size: 14px;
+  font-weight: normal;
+} 
+
+.FIO-cell {
+  font-size: 16px;
+  display: block;
+  white-space: nowrap;
+}
+
+.info-cell {
+  font-size: 14px;
+  text-align: center;
+}
+
+.infoRow {
+  font-size: 14px;
+  line-height: 2rem;
+}
+

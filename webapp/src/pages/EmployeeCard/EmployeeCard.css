@@ -1,0 +1,14 @@
+table, th, td {
+  border: 1px solid;
+  font-size: 16px;
+}
+
+.employee_info_tbl {
+  margin-top: 1rem;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.index_value {
+  text-align: center;
+}
