@@ -39,6 +39,11 @@ body {
   /* overflow: hidden; */
 }
 
+.errmsg {
+  color: firebrick;
+  font-size: medium;
+}
+
 .not_found {
   margin: 200px auto;
   display: flex;
