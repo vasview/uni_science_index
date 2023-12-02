@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import BaseLayout from '../shared/Layout/BaseLayout';
 import Home from '../pages/Home';
+import RequireAuth from '../features/auth/RequireAuth';
 import Login from '../pages/Login';
 import MyProfile from '../pages/MyProfile/MyProfile';
 import Employees from '../pages/Employees/Employees';
@@ -17,6 +19,8 @@ import MyPostgraduates from '../pages/MyPostgraduates';
 import MyResearchManagement from '../pages/MyResearchManagement';
 import MyResearchWorks from '../pages/MyResearchWorks';
 import MyResearchSummary from '../pages/MyResearchSummary';
+import Dashboard from '../pages/Dashboard';
+import EmployeeCard from '../pages/EmployeeCard/EmployeeCard'
 
 import ResetPassword from '../pages/ResetPassword';
 import ResetPasswordConfirm from '../pages/ResetPasswordConfirm';
@@ -24,33 +28,40 @@ import ResetPasswordConfirm from '../pages/ResetPasswordConfirm';
 import history from '../_helpers/history';
 import NotFound from '../pages/NotFound';
 
+
 const RouteTable = () => {
   return (
     <Router history={history}>
       <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/my_profile" element={<MyProfile />} />
-      <Route path="/my_sci_profile" element={<ScientificProfile />} />
-      <Route path="/my_employees" element={<Employees />} />
-      <Route path="/my_guest_lectures" element={<MyGestLectures />} />
-      <Route path="/my_conferences" element={<MyConferences />} />
-      <Route path="/my_patents" element={<MyPatents />} />
-      <Route path="/my_inventions" element={<MyInventions />} />
-      <Route path="/my_copyright_certificates" element={<MyCopyrightCertificates />} />
-      <Route path="/my_monograph_publications" element={<MyMonographPublications />} />
-      <Route path="/my_research_publications" element={<MyResearchPublications />} />
-      <Route path="/my_dissertations" element={<MyDissertations />} />
-      <Route path="/my_postgraduates" element={<MyPostgraduates />} />
-      <Route path="/my_resarch_management" element={<MyResearchManagement />} />
-      <Route path="/my_resarch_works" element={<MyResearchWorks />} />
-      <Route path="/my_resarch_summary" element={<MyResearchSummary />} />
-      
-      <Route path="login" element={<Login />} />
-      <Route path="password/reset" element={<ResetPassword />} />
-      <Route path="password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm />} />
-      
-      <Route path="*" element={<NotFound />} /> 
+        <Route path='/' element={<BaseLayout />}>
+          {/* public routes */}
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="password/reset" element={<ResetPassword />} />
+          <Route path="password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm />} />
 
+          {/* protecte routes */}
+          {/* <Route element={<RequireAuth />}> */}
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="employees_card" element={<EmployeeCard />} />
+            <Route path="my_profile" element={<MyProfile />} />
+            <Route path="my_sci_profile" element={<ScientificProfile />} />
+            <Route path="my_employees" element={<Employees />} />
+            <Route path="my_guest_lectures" element={<MyGestLectures />} />
+            <Route path="my_conferences" element={<MyConferences />} />
+            <Route path="my_patents" element={<MyPatents />} />
+            <Route path="my_inventions" element={<MyInventions />} />
+            <Route path="my_copyright_certificates" element={<MyCopyrightCertificates />} />
+            <Route path="my_monograph_publications" element={<MyMonographPublications />} />
+            <Route path="my_research_publications" element={<MyResearchPublications />} />
+            <Route path="my_dissertations" element={<MyDissertations />} />
+            <Route path="my_postgraduates" element={<MyPostgraduates />} />
+            <Route path="my_resarch_management" element={<MyResearchManagement />} />
+            <Route path="my_resarch_works" element={<MyResearchWorks />} />
+            <Route path="my_resarch_summary" element={<MyResearchSummary />} />
+          {/* </Route> */}
+          <Route path="*" element={<NotFound />} /> 
+        </Route>
       </Routes>
     </Router>
   );
