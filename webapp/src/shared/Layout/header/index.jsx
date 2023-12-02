@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-// import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsAuthenticated, logOut } from '../../../features/auth/authSlice';
+
+import { NavLink } from 'react-router-dom';
 import { AppBar, Toolbar, IconButton, Typography, Tooltip,
          Stack, Button, Grid, Container, Menu, MenuItem } from "@mui/material";
 import ArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -65,14 +69,18 @@ function Header() {
     setinventionMenurEl(null)
   }
 
-  const isAthenticated = true; 
+  // const isAthenticated = false; 
+  const isAthenticated = useSelector(selectIsAuthenticated)
   console.log('auth', isAthenticated)
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
 
-  // const navigateHome = () => {
-  //   // 👇️ navigate to /
-  //   navigate('/');
-  // };
+  const dispatch = useDispatch();
+
+  const navigateLogOut = () => {
+    // 👇️ navigate to /
+    dispatch(logOut());
+    navigate('/');
+  };
 
   return (
     <AppBar position='static'>
@@ -81,274 +89,284 @@ function Header() {
           <IconButton edge='start' 
                       color='inherit' 
                       aria-label='logo'
-                      href="/">
+                      onClick={() => {
+                        isAthenticated
+                        ? navigate('/dashboard')
+                        : navigate('/')
+                      } }
+            >
             <Logo />
             <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
               КГТУ им. И.Раззакова
             </Typography>
           </IconButton>
-          <Stack direction='row' spacing={2}>
-            <Button 
-              color='inherit' 
-              size="medium" 
-              style={{fontSize: 20, textTransform: 'none'}}
-              href='/my_employees'
-            >
-              Сотрудники
-            </Button>
-            <Button 
-              id='lectures-btn'
-              onClick={handleLectureBtnClick}
-              aria-control={open ? 'lectures-menu' : undefined}
-              aria-haspopup='true'
-              aria-expanded={open ? 'true' : undefined}
-              endIcon={<ArrowDownIcon />}
-              color='inherit' 
-              size="medium" 
-              style={{fontSize: 20, textTransform: 'none'}}
-            >
-              Лекции
-            </Button>
-            <Button 
-              id='nir-btn'
-              onClick={handleNirBtnClick}
-              aria-control={nirOpen ? 'nir-menu' : undefined}
-              aria-haspopup='true'
-              aria-expanded={nirOpen ? 'true' : undefined}
-              endIcon={<ArrowDownIcon />}
-              color='inherit' 
-              size="medium" 
-              style={{fontSize: 20}}
-            >
-              НИР
-            </Button>
-            <Button 
-              id='publication-btn'
-              onClick={handlePublicationBtnClick}
-              aria-control={pubOpen ? 'publication-menu' : undefined}
-              aria-haspopup='true'
-              aria-expanded={pubOpen ? 'true' : undefined}
-              endIcon={<ArrowDownIcon />}
-              color='inherit' 
-              size="medium" 
-              style={{fontSize: 20, textTransform: 'none'}}
-            >
-              Публикации
-            </Button>
-            <Button 
-              id='invention-btn'
-              onClick={handleInventionBtnClick}
-              aria-control={inventionOpen ? 'invention-menu' : undefined}
-              aria-haspopup='true'
-              aria-expanded={inventionOpen ? 'true' : undefined}
-              endIcon={<ArrowDownIcon />}
-              color='inherit' 
-              size="medium" 
-              style={{fontSize: 20, textTransform: 'none'}}
-            >
-              Изобретения
-            </Button>
-            {/* <Button
-              id='profile-btn'
-              onClick={handleProfileBtnClick}
-              aria-control={profileOpen ? 'account-menu' : undefined}
-              aria-haspopup='true'
-              aria-expanded={profileOpen ? 'true' : undefined}
-              endIcon={<ArrowDownIcon />}
-              color='inherit' 
-              size="medium" 
-              style={{fontSize: 20, textTransform: 'none'}}
-            >
-              Мой профиль
-            </Button> */}
-            {/* my profile */}
-            <Tooltip title="Настройки профиля">
-              <IconButton
-                id='account-btn'
-                onClick={handleProfileBtnClick}
-                size="small"
-                sx={{ ml: 2 }}
-                aria-controls={profileOpen ? 'account-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={profileOpen ? 'true' : undefined}
+          {isAthenticated &&
+            <Stack direction='row' spacing={2}>
+              <Button 
+                color='inherit' 
+                size="medium" 
+                style={{fontSize: 20, textTransform: 'none'}}
+                onClick={() => navigate('/my_employees')}
               >
-                <Avatar sx={{ width: 32, height: 32 }}></Avatar>
-              </IconButton>
-            </Tooltip>
+                Сотрудники
+              </Button>
+              <Button 
+                id='lectures-btn'
+                onClick={handleLectureBtnClick}
+                aria-control={open ? 'lectures-menu' : undefined}
+                aria-haspopup='true'
+                aria-expanded={open ? 'true' : undefined}
+                endIcon={<ArrowDownIcon />}
+                color='inherit' 
+                size="medium" 
+                style={{fontSize: 20, textTransform: 'none'}}
+              >
+                Лекции
+              </Button>
+              <Button 
+                id='nir-btn'
+                onClick={handleNirBtnClick}
+                aria-control={nirOpen ? 'nir-menu' : undefined}
+                aria-haspopup='true'
+                aria-expanded={nirOpen ? 'true' : undefined}
+                endIcon={<ArrowDownIcon />}
+                color='inherit' 
+                size="medium" 
+                style={{fontSize: 20}}
+              >
+                НИР
+              </Button>
+              <Button 
+                id='publication-btn'
+                onClick={handlePublicationBtnClick}
+                aria-control={pubOpen ? 'publication-menu' : undefined}
+                aria-haspopup='true'
+                aria-expanded={pubOpen ? 'true' : undefined}
+                endIcon={<ArrowDownIcon />}
+                color='inherit' 
+                size="medium" 
+                style={{fontSize: 20, textTransform: 'none'}}
+              >
+                Публикации
+              </Button>
+              <Button 
+                id='invention-btn'
+                onClick={handleInventionBtnClick}
+                aria-control={inventionOpen ? 'invention-menu' : undefined}
+                aria-haspopup='true'
+                aria-expanded={inventionOpen ? 'true' : undefined}
+                endIcon={<ArrowDownIcon />}
+                color='inherit' 
+                size="medium" 
+                style={{fontSize: 20, textTransform: 'none'}}
+              >
+                Изобретения
+              </Button>
+              {/* my profile */}
+              <Tooltip title={<h5>Настройки профиля</h5>}>
+                <IconButton
+                  id='account-btn'
+                  onClick={handleProfileBtnClick}
+                  size="small"
+                  sx={{ ml: 2 }}
+                  aria-controls={profileOpen ? 'account-menu' : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={profileOpen ? 'true' : undefined}
+                >
+                  <Avatar sx={{ width: 32, height: 32 }}></Avatar>
+                </IconButton>
+              </Tooltip>
 
-            <IconButton 
-              edge='end' 
-              color='inherit' 
-              aria-label='Exit'
-              size='large'
+              <IconButton 
+                edge='end' 
+                color='inherit' 
+                aria-label='Exit'
+                size='large'
+                onClick={navigateLogOut}
+              >
+                <LogoutIcon style={{ fontSize: 24 }}/>
+              </IconButton>
+            </Stack>
+          }
+          {/* Guest lectures submenu */}
+            <Menu 
+              id='lectures-menu' 
+              anchorEl={anchorEl} 
+              open={open}
+              MenuListProps={{
+                'aria-labelledby': 'lectures-btn',
+              }}
+              onClose={handleLecturesClose}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
             >
-              <LogoutIcon style={{ fontSize: 24 }}/>
-            </IconButton>
-          </Stack>
-          <Menu 
-            id='lectures-menu' 
-            anchorEl={anchorEl} 
-            open={open}
-            MenuListProps={{
-              'aria-labelledby': 'lectures-btn',
-            }}
-            onClose={handleLecturesClose}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-          >
-            <MenuItem sx={{fontSize: 20}} component={'a'} href='/my_guest_lectures'>
-              Гостевые лекции и стажировки
-            </MenuItem>
-            <MenuItem sx={{fontSize: 20}} component={'a'} href='/my_conferences'>
-              Семинары и конференции
-            </MenuItem>
-          </Menu>
-          {/* Nir submenu */}
-          <Menu 
-            id='profile-menu' 
-            anchorEl={nirAnchorEl} 
-            open={nirOpen}
-            MenuListProps={{
-              'aria-labelledby': 'nir-btn',
-            }}
-            onClose={handleNirClose}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-          >
-            <MenuItem 
-              sx={{fontSize: 20}}
-              component={'a'}
-              href="/my_dissertations"
+              <MenuItem 
+                sx={{fontSize: 20}} 
+                onClick={() => navigate('/my_guest_lectures')}
+              >
+                Гостевые лекции и стажировки
+              </MenuItem>
+              <MenuItem 
+                sx={{fontSize: 20}} 
+                onClick={() => navigate('/my_conferences')}
+              >
+                Семинары и конференции
+              </MenuItem>
+            </Menu>
+            {/* Nir submenu */}
+            <Menu 
+              id='profile-menu' 
+              anchorEl={nirAnchorEl} 
+              open={nirOpen}
+              MenuListProps={{
+                'aria-labelledby': 'nir-btn',
+              }}
+              onClose={handleNirClose}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+            >
+              <MenuItem 
+                sx={{fontSize: 20}}
+                onClick={() => navigate('/my_dissertations')}
+              > 
+                Защита диссертации
+              </MenuItem>
+              <MenuItem 
+                sx={{fontSize: 20}}
+                onClick={() => navigate('/my_postgraduates')}
+              >
+                Руководство докторантами и аспирантами
+              </MenuItem>
+              <MenuItem 
+                sx={{fontSize: 20}}
+                onClick={() => navigate('/my_resarch_management')}
+              >
+                Руководство НИРС
+              </MenuItem>
+              <MenuItem 
+                sx={{fontSize: 20}}
+                onClick={() => navigate('/my_resarch_works')}
+              >
+                Научно-исследовательская работы
+              </MenuItem>
+              <MenuItem 
+                sx={{fontSize: 20}}
+                onClick={() => navigate('/my_resarch_summary')}
+              >
+                Сводка по НИР
+              </MenuItem>
+            </Menu>
+            {/* Publication submenu */}
+            <Menu 
+              id='publication-menu' 
+              anchorEl={pubAnchorEl} 
+              open={pubOpen}
+              MenuListProps={{
+                'aria-labelledby': 'publication-btn',
+              }}
+              onClose={handlePublicationClose}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+            >
+              <MenuItem 
+                sx={{fontSize: 20}} 
+                onClick={() => navigate('/my_research_publications')}
+              > 
+                Публикации по итогам НИРС
+              </MenuItem>
+              <MenuItem 
+                sx={{fontSize: 20}} 
+                onClick={() => navigate('/my_monograph_publications')}
+              > 
+                Публикация монографии
+              </MenuItem>
+            </Menu>
+            {/* Invention submenu */}
+            <Menu 
+              id='invention-menu' 
+              anchorEl={inventionMenurEl} 
+              open={inventionOpen}
+              MenuListProps={{
+                'aria-labelledby': 'invention-btn',
+              }}
+              onClose={handleInventionClose}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+            >
+              <MenuItem 
+                sx={{fontSize: 20}} 
+                onClick={() => navigate('/my_copyright_certificates')}
+              >
+                Получение авторских свидетельств
+              </MenuItem>
+              <MenuItem 
+                sx={{fontSize: 20}} 
+                onClick={() => navigate('/my_inventions')}
+              >
+                Заявка на изобретение
+              </MenuItem>
+              <MenuItem 
+                sx={{fontSize: 20}} 
+                onClick={() => navigate('/my_patents')} 
+              >
+                Патенты на изобретение
+              </MenuItem>
+            </Menu>
+            {/* Profile submenu */}
+            <Menu 
+              id='account-menu' 
+              anchorEl={profileMenurEl} 
+              open={profileOpen}
+              MenuListProps={{
+                'aria-labelledby': 'account-btn',
+              }}
+              onClose={handleProfileClose}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
             > 
-              Защита диссертации
-            </MenuItem>
-            <MenuItem 
-              sx={{fontSize: 20}}
-              component={'a'}
-              href="/my_postgraduates"
-            >
-              Руководство докторантами и аспирантами
-            </MenuItem>
-            <MenuItem 
-              sx={{fontSize: 20}}
-              component={'a'}
-              href="/my_resarch_management"
-            >
-              Руководство НИРС
-            </MenuItem>
-            <MenuItem 
-              sx={{fontSize: 20}}
-              component={'a'}
-              href="/my_resarch_works"
-            >
-              Научно-исследовательская работы
-            </MenuItem>
-            <MenuItem 
-              sx={{fontSize: 20}}
-              component={'a'}
-              href="/my_resarch_summary"
-            >
-              Сводка по НИР
-            </MenuItem>
-          </Menu>
-          {/* Publication submenu */}
-          <Menu 
-            id='publication-menu' 
-            anchorEl={pubAnchorEl} 
-            open={pubOpen}
-            MenuListProps={{
-              'aria-labelledby': 'publication-btn',
-            }}
-            onClose={handlePublicationClose}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-          >
-            <MenuItem 
-              sx={{fontSize: 20}} 
-              component={'a'} 
-              href='/my_research_publications'
-            > 
-              Публикации по итогам НИРС
-            </MenuItem>
-            <MenuItem 
-              sx={{fontSize: 20}} 
-              component={'a'} 
-              href='/my_monograph_publications'
-            > 
-              Публикация монографии
-            </MenuItem>
-          </Menu>
-          {/* Invention submenu */}
-          <Menu 
-            id='invention-menu' 
-            anchorEl={inventionMenurEl} 
-            open={inventionOpen}
-            MenuListProps={{
-              'aria-labelledby': 'invention-btn',
-            }}
-            onClose={handleInventionClose}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-          >
-            <MenuItem sx={{fontSize: 20}} component={'a'} href='/my_copyright_certificates'>
-              Получение авторских свидетельств
-            </MenuItem>
-            <MenuItem sx={{fontSize: 20}} component={'a'} href='/my_inventions'>
-              Заявка на изобретение
-            </MenuItem>
-            <MenuItem sx={{fontSize: 20}} component={'a'} href='/my_patents'>
-              Патенты на изобретение
-            </MenuItem>
-          </Menu>
-          {/* Profile submenu */}
-          <Menu 
-            id='account-menu' 
-            anchorEl={profileMenurEl} 
-            open={profileOpen}
-            MenuListProps={{
-              'aria-labelledby': 'account-btn',
-            }}
-            onClose={handleProfileClose}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-          > 
-            <MenuItem sx={{fontSize: 20}} component={'a'} href='/my_sci_profile'>
+              <MenuItem 
+                sx={{fontSize: 20}} 
+                onClick={() => navigate('/my_sci_profile')} 
+              >
               Научный профиль
-            </MenuItem>
-            <MenuItem sx={{fontSize: 20}} component={'a'} href='/my_profile'>
-              Настройки профиля
-            </MenuItem>
-          </Menu>
+              </MenuItem>
+              <MenuItem 
+                sx={{fontSize: 20}} 
+                onClick={() => navigate('/my_profile')} 
+              >
+                Мой профиль
+              </MenuItem>
+            </Menu>
         </Toolbar>
       </Container>
     </AppBar>
