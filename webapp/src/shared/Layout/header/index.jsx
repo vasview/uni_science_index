@@ -197,6 +197,7 @@ function Header() {
                 'aria-labelledby': 'lectures-btn',
               }}
               onClose={handleLecturesClose}
+              onClick={handleLecturesClose}
               anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'right',
@@ -208,13 +209,15 @@ function Header() {
             >
               <MenuItem 
                 sx={{fontSize: 20}} 
-                onClick={() => navigate('/my_guest_lectures')}
+                component={Link}
+                to='/my_guest_lectures'
               >
                 Гостевые лекции и стажировки
               </MenuItem>
               <MenuItem 
                 sx={{fontSize: 20}} 
-                onClick={() => navigate('/my_conferences')}
+                component={Link}
+                to='/my_conferences'
               >
                 Семинары и конференции
               </MenuItem>
@@ -228,6 +231,7 @@ function Header() {
                 'aria-labelledby': 'nir-btn',
               }}
               onClose={handleNirClose}
+              onClick={handleNirClose}
               anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'right',
@@ -239,31 +243,36 @@ function Header() {
             >
               <MenuItem 
                 sx={{fontSize: 20}}
-                onClick={() => navigate('/my_dissertations')}
+                component={Link}
+                to='/my_dissertations'
               > 
                 Защита диссертации
               </MenuItem>
               <MenuItem 
                 sx={{fontSize: 20}}
-                onClick={() => navigate('/my_postgraduates')}
+                component={Link}
+                to='/my_postgraduates'
               >
                 Руководство докторантами и аспирантами
               </MenuItem>
               <MenuItem 
                 sx={{fontSize: 20}}
-                onClick={() => navigate('/my_resarch_management')}
+                component={Link}
+                to='/my_resarch_management'
               >
                 Руководство НИРС
               </MenuItem>
               <MenuItem 
                 sx={{fontSize: 20}}
-                onClick={() => navigate('/my_resarch_works')}
+                component={Link}
+                to='/my_resarch_works'
               >
                 Научно-исследовательская работы
               </MenuItem>
               <MenuItem 
                 sx={{fontSize: 20}}
-                onClick={() => navigate('/my_resarch_summary')}
+                component={Link}
+                to='/my_resarch_summary'
               >
                 Сводка по НИР
               </MenuItem>
@@ -277,6 +286,7 @@ function Header() {
                 'aria-labelledby': 'publication-btn',
               }}
               onClose={handlePublicationClose}
+              onClick={handlePublicationClose}
               anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'right',
@@ -287,14 +297,16 @@ function Header() {
               }}
             >
               <MenuItem 
-                sx={{fontSize: 20}} 
-                onClick={() => navigate('/my_research_publications')}
+                sx={{fontSize: 20}}
+                component={Link}
+                to='/my_research_publications'
               > 
                 Публикации по итогам НИРС
               </MenuItem>
               <MenuItem 
-                sx={{fontSize: 20}} 
-                onClick={() => navigate('/my_monograph_publications')}
+                sx={{fontSize: 20}}
+                component={Link}
+                to='/my_monograph_publications'
               > 
                 Публикация монографии
               </MenuItem>
@@ -308,6 +320,7 @@ function Header() {
                 'aria-labelledby': 'invention-btn',
               }}
               onClose={handleInventionClose}
+              onClick={handleInventionClose}
               anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'right',
@@ -318,20 +331,23 @@ function Header() {
               }}
             >
               <MenuItem 
-                sx={{fontSize: 20}} 
-                onClick={() => navigate('/my_copyright_certificates')}
+                sx={{fontSize: 20}}
+                component={Link}
+                to='/my_copyright_certificates'
               >
                 Получение авторских свидетельств
               </MenuItem>
               <MenuItem 
-                sx={{fontSize: 20}} 
-                onClick={() => navigate('/my_inventions')}
+                sx={{fontSize: 20}}
+                component={Link}
+                to='/my_inventions'
               >
                 Заявка на изобретение
               </MenuItem>
               <MenuItem 
-                sx={{fontSize: 20}} 
-                onClick={() => navigate('/my_patents')} 
+                sx={{fontSize: 20}}
+                component={Link}
+                to='/my_patents'
               >
                 Патенты на изобретение
               </MenuItem>
@@ -345,6 +361,7 @@ function Header() {
                 'aria-labelledby': 'account-btn',
               }}
               onClose={handleProfileClose}
+              onClick={handleProfileClose}
               anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'right',
@@ -355,14 +372,16 @@ function Header() {
               }}
             > 
               <MenuItem 
-                sx={{fontSize: 20}} 
-                onClick={() => navigate('/my_sci_profile')} 
+                sx={{fontSize: 20}}
+                component={Link}
+                to='/my_sci_profile'
               >
               Научный профиль
               </MenuItem>
               <MenuItem 
-                sx={{fontSize: 20}} 
-                onClick={() => navigate('/my_profile')} 
+                sx={{fontSize: 20}}
+                component={Link}
+                to='/my_profile'
               >
                 Мой профиль
               </MenuItem>

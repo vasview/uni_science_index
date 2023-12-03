@@ -5,15 +5,12 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function DashboardCard(props) {
   const { title, number, link } = props;
 
-  const navigate = useNavigate();
-
   return (
-    <>
     <Grid item xs={6} sm={4} md={3}>
       <Card sx={{ height: '100%' }}>
         <CardContent>
@@ -36,7 +33,8 @@ function DashboardCard(props) {
           <Button 
             variant='contained'
             size="small"
-            onClick={() => navigate(link)}
+            component={Link}
+            to={link}
             sx={{ 
               fontSize: 14,
               flexGrow: 1
@@ -47,7 +45,6 @@ function DashboardCard(props) {
         </CardActions>
       </Card>
     </Grid>
-    </>
   )
 }
 
