@@ -3,9 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsAuthenticated, logOut } from '../../../features/auth/authSlice';
 
-import { NavLink } from 'react-router-dom';
 import { AppBar, Toolbar, IconButton, Typography, Tooltip,
-         Stack, Button, Grid, Container, Menu, MenuItem } from "@mui/material";
+         Stack, Button, Container, Menu, MenuItem } from "@mui/material";
 import ArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Avatar from '@mui/material/Avatar';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -113,7 +112,7 @@ function Header() {
               <Button 
                 id='lectures-btn'
                 onClick={handleLectureBtnClick}
-                aria-control={open ? 'lectures-menu' : undefined}
+                aria-controls={open ? 'lectures-menu' : undefined}
                 aria-haspopup='true'
                 aria-expanded={open ? 'true' : undefined}
                 endIcon={<ArrowDownIcon />}
@@ -126,7 +125,7 @@ function Header() {
               <Button 
                 id='nir-btn'
                 onClick={handleNirBtnClick}
-                aria-control={nirOpen ? 'nir-menu' : undefined}
+                aria-controls={nirOpen ? 'nir-menu' : undefined}
                 aria-haspopup='true'
                 aria-expanded={nirOpen ? 'true' : undefined}
                 endIcon={<ArrowDownIcon />}
@@ -139,7 +138,7 @@ function Header() {
               <Button 
                 id='publication-btn'
                 onClick={handlePublicationBtnClick}
-                aria-control={pubOpen ? 'publication-menu' : undefined}
+                aria-controls={pubOpen ? 'publication-menu' : undefined}
                 aria-haspopup='true'
                 aria-expanded={pubOpen ? 'true' : undefined}
                 endIcon={<ArrowDownIcon />}
@@ -152,7 +151,7 @@ function Header() {
               <Button 
                 id='invention-btn'
                 onClick={handleInventionBtnClick}
-                aria-control={inventionOpen ? 'invention-menu' : undefined}
+                aria-controls={inventionOpen ? 'invention-menu' : undefined}
                 aria-haspopup='true'
                 aria-expanded={inventionOpen ? 'true' : undefined}
                 endIcon={<ArrowDownIcon />}

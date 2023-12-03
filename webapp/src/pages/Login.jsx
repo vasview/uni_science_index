@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { setCredentials } from '../features/auth/authSlice';
@@ -15,6 +15,9 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [errMsg, setErrMsg] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const fromPage = location.state?.from?.pathname || '/dashboard';
 
   const [login, { isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
@@ -43,7 +46,7 @@ const Login = () => {
       setEmail('')
       setPassword('')
       // is the user authentiated? redirect to home page
-      navigate('/dashboard')
+      navigate(fromPage, {replace: true})
     } catch (err) {
       if (!err?.status) {
         setErrMsg('No Server Response');

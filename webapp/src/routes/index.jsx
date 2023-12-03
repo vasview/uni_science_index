@@ -41,7 +41,7 @@ const RouteTable = () => {
           <Route path="password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm />} />
 
           {/* protecte routes */}
-          {/* <Route element={<RequireAuth />}> */}
+          <Route element={<RequireAuth />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="employees_card" element={<EmployeeCard />} />
             <Route path="my_profile" element={<MyProfile />} />
@@ -59,7 +59,7 @@ const RouteTable = () => {
             <Route path="my_resarch_management" element={<MyResearchManagement />} />
             <Route path="my_resarch_works" element={<MyResearchWorks />} />
             <Route path="my_resarch_summary" element={<MyResearchSummary />} />
-          {/* </Route> */}
+          </Route>
           <Route path="*" element={<NotFound />} /> 
         </Route>
       </Routes>
