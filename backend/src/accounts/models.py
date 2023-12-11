@@ -3,6 +3,8 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 from .managers import UserManager
 from registers.models import AcademicDegree, AcademicTitle, ResearchDataBase
@@ -73,4 +75,15 @@ class ScientificProfile(models.Model):
 
     def __str__(self):
         return self.research_db.name
+    
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+# @receiver(post_save, sender=User)
+# def create_user_scientific_profile(sender, instance, created, **kwargs):
+#     if created:
+#         ScientificProfile.objects.create(user=instance)
     

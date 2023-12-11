@@ -5,12 +5,7 @@ from accounts.views import *
 router = DefaultRouter()
 
 router.register(r'users', UserViewSet)
-router.register(r'profiles', ProfileViewSet)
-router.register(r'scientific_profile',ScientificProfileViewSet)
+router.register(r'user/profile', ProfileViewSet)
+router.register(r'user/scientific_profile',ScientificProfileViewSet)
 
 urlpatterns = router.urls
-
-# urlpatterns = [
-#     path('users/', UserAPIView.as_view(), name='all_users'),
-#     path('profiles/', ProfileAPIView.as_view(), name='all_profiles'),
-# ]
