@@ -21,6 +21,11 @@ class ResearchDataBaseSerializer(serializers.ModelSerializer):
         model = ResearchDataBase
         fields = '__all__'
 
+class ResearchDataBaseShortSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ResearchDataBase
+        fields = ['id', 'name', 'sort']
+
 class FundSourceSerializer(serializers.ModelSerializer):
     class Meta:
         model = FundSource
