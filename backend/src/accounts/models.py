@@ -53,7 +53,7 @@ class Profile(models.Model):
     academic_degree = models.ForeignKey(AcademicDegree, on_delete=models.SET_NULL, blank=True, null=True)
     academic_title  = models.ForeignKey(AcademicTitle, on_delete=models.SET_NULL, blank=True, null=True)
     created_at      = models.DateTimeField(auto_now_add=True)
-    updated_ate     = models.DateField(auto_now=True)
+    updated_at      = models.DateField(auto_now=True)
 
     class Meta:
         verbose_name = 'Профиль пользователя'
@@ -64,7 +64,7 @@ class Profile(models.Model):
         return self.full_name
 
 class ScientificProfile(models.Model):
-    user        = models.OneToOneField(User, on_delete=models.CASCADE)
+    user        = models.ForeignKey(User, on_delete=models.CASCADE)
     research_db = models.ForeignKey(ResearchDataBase, on_delete=models.SET_NULL, blank=True, null=True)
     account     = models.CharField(max_length=200, blank=True, null=True)
 
@@ -74,7 +74,7 @@ class ScientificProfile(models.Model):
         ordering = ['id']
 
     def __str__(self):
-        return self.research_db.name
+        return self.user.get_full_name() + ' ' + self.research_db.name
     
 
 @receiver(post_save, sender=User)

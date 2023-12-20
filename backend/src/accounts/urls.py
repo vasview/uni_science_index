@@ -6,6 +6,6 @@ router = DefaultRouter()
 
 router.register(r'users', UserViewSet)
 router.register(r'user/profile', ProfileViewSet)
-router.register(r'user/scientific_profile',ScientificProfileViewSet)
+router.register(r'user/scientific_profiles', ScientificProfileViewSet)
 
 urlpatterns = router.urls

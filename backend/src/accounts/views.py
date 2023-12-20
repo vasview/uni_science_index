@@ -1,4 +1,7 @@
 from rest_framework import viewsets, mixins
+from django.http import Http404
+from django.http import JsonResponse
+from rest_framework import status
 from rest_framework.mixins import ListModelMixin
 from rest_framework import permissions
 from rest_framework.generics import RetrieveUpdateAPIView
@@ -47,5 +50,18 @@ class ScientificProfileViewSet(viewsets.ModelViewSet):
             user = self.request.user
             return self.queryset.filter(user_id = user.id)
         else:
-            self.queryset.get(id=self.kwargs[:id])
+            return self.queryset.filter(id=self.kwargs['pk'])
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+    def destroy(self, request, *args, **kwargs):
+        try:
+            instance = self.get_object()
+            self.perform_destroy(instance)
+        except Http404:
+            pass
+        return JsonResponse({'status': status.HTTP_204_NO_CONTENT})
+    
+    def perform_destroy(self, instance):
+        instance.delete()

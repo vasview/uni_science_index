@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from registers.serializers import *
 from .models import *
-from registers.models import AcademicDegree, AcademicTitle
+from registers.models import AcademicDegree, AcademicTitle, ResearchDataBase
 
 from djoser.serializers import UserCreateSerializer as BaseUserRegistrationSerializer
 
@@ -38,6 +38,9 @@ class MyUserSerializer(serializers.ModelSerializer):
         fields = ['id', 'email', 'user_name', 'is_active']
 
 class ScientificProfileSerializer(serializers.ModelSerializer):
+    research_db_name = serializers.ReadOnlyField(source='research_db.name')
+
     class Meta:
         model = ScientificProfile
         fields = '__all__'
+        read_only_fields = ('user',) 
