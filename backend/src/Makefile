@@ -10,6 +10,7 @@ APP_ACCOUNT = accounts
 APP_ACTIVITIES = activities
 APP_ORGANIZATION = organization
 APP_REGISTER = registers
+APP_PUBLICATIONS = publications
 FIXTURE = ./config/fixtures
 
 # ${VENV}\Scripts\activate: requirements.txt
@@ -28,12 +29,14 @@ migrations:
 	${PYTHON} ${MANAGE} makemigrations ${APP_ORGANIZATION}
 	${PYTHON} ${MANAGE} makemigrations ${APP_REGISTER}
 	${PYTHON} ${MANAGE} makemigrations ${APP_ACTIVITIES}
+	${PYTHON} ${MANAGE} makemigrations ${APP_PUBLICATIONS}
 
 inspect_migration:
 	${PYTHON} ${MANAGE} sqlmigrate ${APP_ACCOUNT}
 	${PYTHON} ${MANAGE} sqlmigrate ${APP_ORGANIZATION}
 	${PYTHON} ${MANAGE} sqlmigrate ${APP_REGISTER}
 	${PYTHON} ${MANAGE} sqlmigrate ${APP_ACTIVITIES}
+	${PYTHON} ${MANAGE} sqlmigrate ${APP_PUBLICATIONS}
 	
 migrate:
 	${PYTHON} ${MANAGE} migrate
@@ -43,6 +46,7 @@ rollback_all_migrations:
 	${PYTHON} ${MANAGE} migrate ${APP_ORGANIZATION} zero
 	${PYTHON} ${MANAGE} migrate ${APP_REGISTER} zero
 	${PYTHON} ${MANAGE} migrate ${APP_ACTIVITIES} zero
+	${PYTHON} ${MANAGE} migrate ${APP_PUBLICATIONS} zero
 
 delete_migrations:
 	find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
