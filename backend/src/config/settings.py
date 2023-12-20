@@ -15,7 +15,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-scifi-test2424')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.environ.get('DEBUG')) == '1'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
 if not DEBUG:
     ALLOWED_HOSTS += os.environ.get('ALLOWED_HOSTS').split(' ')
 
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     'registers',
     'organization',
     'activities',
+    'publications',
 ]
 
 MIDDLEWARE = [
@@ -136,9 +139,26 @@ else:
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 CORS_ALLOW_CREDENTIALS = True
+# TODO remove when in production
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    "http://localhost:3000", 
+    "http://127.0.0.1:3000", 
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "http://192.168.88.100",
 ]
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_PRIVATE_NETWORK: True
+CORS_ALLOWED_HEADERS = (
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-request-with",
+    "*"
+)
+USE_X_FORWARDED_HOST = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -161,7 +181,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=300), #TODO make 15-30 minutes
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": False,

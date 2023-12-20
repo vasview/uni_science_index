@@ -11,6 +11,7 @@ admin.site.site_header = 'Научная деятельность универс
 api_urlpatterns = [
     path('accounts/', include('accounts.urls')),
     # path('activities/', include('activities.urls')),
+    path('publications/', include('publications.urls')),
     path('organization/', include('organization.urls')),
     path('registers/', include('registers.urls')),
     path('auth/', include('djoser.urls')),
