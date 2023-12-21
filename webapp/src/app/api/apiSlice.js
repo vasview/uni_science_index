@@ -19,7 +19,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   if (result?.error?.originalStatus === 401) {
     console.log('sending refresh token')
     // send refresh token to get new access token
-    const refreshResult = await baseQuery('auth/jwt/refresh/', api, extraOptions)
+    const refreshResult = await baseQuery('/auth/jwt/refresh/', api, extraOptions)
     console.log(refreshResult)
     if (refreshResult?.data) {
       const user = api.getState().auth.user
@@ -36,6 +36,8 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 }
 
 export const apiSlice = createApi({
+  reducerPath: 'api',
+  tagTypes: ['SciProfiles'],
   baseQuery: baseQueryWithReauth,
   endpoints: builder => ({})
 })
