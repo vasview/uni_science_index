@@ -78,7 +78,7 @@ function Header() {
   const navigateLogOut = () => {
     // 👇️ navigate to /
     dispatch(logOut());
-    navigate('/');
+    navigate('/', {replace: true});
   };
 
   return (
@@ -308,6 +308,13 @@ function Header() {
                 to='/my_monograph_publications'
               > 
                 Публикация монографии
+              </MenuItem>
+              <MenuItem 
+                sx={{fontSize: 20}}
+                component={Link}
+                to='/my_gscholar_publications'
+              > 
+                Публикация на Google Scholar
               </MenuItem>
             </Menu>
             {/* Invention submenu */}
