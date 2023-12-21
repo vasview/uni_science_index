@@ -9,6 +9,7 @@ const store = configureStore({
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(apiSlice.middleware),
+    // TODO remove when in production
   devTools: true
 });
 
