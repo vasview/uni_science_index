@@ -1,6 +1,9 @@
 import React from 'react'
 import { Container, Typography } from '@mui/material'
 import { DashboardCardList } from '../../components/UI/DashboardCardList'
+import { userLoadedSuccess, userLoadedFail } from '../../features/auth/authSlice';
+import { useDispatch } from 'react-redux';
+import { useGetUserQuery } from '../../features/auth/userApiSlice';
 
 export const Dashboard = () => {
   const cards = [
@@ -16,6 +19,12 @@ export const Dashboard = () => {
     { id: 10, title: 'Заявки на изобретения', number: 9, link: ''},
     { id: 11, title: 'Патенты на изобретения', number: 3, link: ''},
   ]
+
+  const dispatch = useDispatch();
+
+  const { data: current_user, isSuccess, isError } = useGetUserQuery();
+  console.log('dashboard user',current_user)
+  { isSuccess ? dispatch(userLoadedSuccess(current_user)) : dispatch(userLoadedFail) }
 
   return (
     <Container sx={{ paddingTop: 2 }}>
