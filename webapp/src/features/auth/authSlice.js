@@ -3,55 +3,37 @@ import { createSlice } from "@reduxjs/toolkit";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const initialState = {
-  accessToken: null,
-  refreshToken: null,
+  accessToken: localStorage.getItem('token') || null,
+  refreshToken: localStorage.getItem('refresh') || null, //TODO move refresh to httpOnly cookies
   isAuthenticated: null,
   user: null,
   status: null,
   error: null,
 }
 
-// export const loginUser = createAsyncThunk(
-//   'auth/loginUser',
-//   async function(userCredentials) {
-//     const response = await fetch(`${BASE_URL}/auth/jwt/create`)
-
-//     const data = await response.json();
-
-//     return data;
-//   }
-// )
-
-// export const fetchUser = createAsyncThunk(
-//   'auth/fetchUser',
-//   async function() {
-//     const response = await fetch(`${BASE_URL}/auth/jwt/create/`);
-
-//     const data = await response.json();
-
-//     return data;
-//   }
-// );
-
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
     setCredentials: (state, action) => {
-      const { user, access, refresh } = action.payload
+      const { access, refresh } = action.payload
+      localStorage.setItem('token', access)
+      localStorage.setItem('refresh', refresh)  //TODO move refresh to httpOnly cookies
       state.accessToken = access
       state.refreshToken = refresh
       state.isAuthenticated = true
-      state.user = user
     },
     logOut: (state) => {
+      localStorage.removeItem('token')
       state.accessToken = null
       state.refreshToken = null
       state.isAuthenticated = false
       state.user = null      
     },
     userLoadedSuccess: (state, action) => {
-      state.user = action.user
+      console.log('user_loaded', action)
+      console.log('state', state)
+      state.user = action.payload
     },
     userLoadedFail: (state) => {
       state.user = null
@@ -79,7 +61,7 @@ const authSlice = createSlice({
   // }
 });
 
-export const { setCredentials, logOut } = authSlice.actions;
+export const { setCredentials, logOut, userLoadedSuccess, userLoadedFail } = authSlice.actions;
 
 export default authSlice.reducer;
 

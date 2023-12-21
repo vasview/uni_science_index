@@ -20,6 +20,7 @@ const Login = () => {
   const fromPage = location.state?.from?.pathname || '/dashboard';
 
   const [login, { isLoading }] = useLoginMutation();
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const Login = () => {
     //loin(email, password)
     try {
       const userData = await login({ email, password }).unwrap()
-      console.log(userData)
+      console.log('userData', userData)
       // dispatch(setCredentials({ ...userData, user }))
       dispatch(setCredentials({ ...userData }))
       setEmail('')

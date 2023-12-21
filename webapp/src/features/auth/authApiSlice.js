@@ -4,7 +4,7 @@ export const authApiSlie = apiSlice.injectEndpoints({
   endpoints: builder => ({
     login: builder.mutation({
       query: credentials => ({
-        url: 'auth/jwt/create/',
+        url: '/auth/jwt/create/',
         method: 'POST',
         body: { ...credentials }
       })
