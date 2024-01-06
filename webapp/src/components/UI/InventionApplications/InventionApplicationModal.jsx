@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Checkbox from '@mui/material/Checkbox';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import 'dayjs/locale/ru';
 import dayjs from 'dayjs';
@@ -11,45 +12,45 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useAddCopyrightCertMutation } from '../../../features/copyrightCertifications/copyrightCertApiSlice';
-import { useUpdateCopyrightCertMutation } from '../../../features/copyrightCertifications/copyrightCertApiSlice';
+import { useAddInventionAplMutation } from '../../../features/inventionApplications/inventionAplApiSlice';
+import { useUpdateInventionAplMutation } from '../../../features/inventionApplications/inventionAplApiSlice';
 import '../../shareStyle/ModalStyle.css'
 
-export default function CopyrightCertModal({ closeModal, openModal, defaultValue }) {
+export default function InventionApplicationModal({ closeModal, openModal, defaultValue }) {
 // console.log('defaultValue', defaultValue)
   const [formData, setFormData] = useState(
     defaultValue || {
       registration_number: '',
-      title: '',
+      description: '',
       application_date: '',
-      issued_date: '',
-      issued_by: ''
+      application_type: '',
+      organization: '',
+      is_local: true
     }
   );
 
   const [errors, setErrors] = useState('');
 
   const validateForm = () => {
-    if (formData.registration_number && formData.title
-      && formData.application_date && formData.issued_date
-      && formData.issued_by) {
+    if (formData.registration_number && formData.description
+      && formData.application_date && formData.application_type
+      && formData.organization) {
         return true;
       } else {
         return false;
       }
   }
 
-  function HadleIssuedDateChange(value) {
-    setFormData(
-      (prevFormData) => ({ ...prevFormData,['issued_date']: value.format('YYYY-MM-DD') })
-    )
-  }
-
   function HadleAplDateChange(value) {
     setFormData(
       (prevFormData) => ({...prevFormData,['application_date']: value.format('YYYY-MM-DD') })
+    )
+  }
+
+  function HadleAplCheckBoxChange(event) {
+    setFormData(
+      (prevFormData) => ({...prevFormData,['is_local']: event.target.checked })
     )
   }
 
@@ -62,55 +63,60 @@ export default function CopyrightCertModal({ closeModal, openModal, defaultValue
     });
   };
 
-  const [addCopyrightCert, { isError: addCertError }] = useAddCopyrightCertMutation();
+  const [addInventionApl, { isError: addAplError }] = useAddInventionAplMutation();
 
-  const HandleAddCert = async (event) => {
+  const HandleAddApl = async (event) => {
     event.preventDefault()
     
-    console.log(formData)
+    console.log('add application', formData)
+    console.log('form valid', validateForm())
     if (!validateForm()) {
       // closeModal();  //TODO think about the behaviour
       return;
     }
     try {
-      const newCertificate = await addCopyrightCert(formData).unwrap()
+      const newInventionApl = await addInventionApl(formData).unwrap()
       setFormData ({
         registration_number: '',
-        title: '',
+        description: '',
         application_date: '',
-        issued_date: '',
-        issued_by: ''
+        application_type: '',
+        organization: '',
+        is_local: true
       })
     
       closeModal();
     } catch (err) {
-      console.log('add_cert_error', err)
+      console.log('add_invention_apl_error', err)
       setErrors(err.data.detail)
     }
   }
 
-  const [updateCopyrightCert, {isError: updateCertError}] = useUpdateCopyrightCertMutation();
+  const [updateInventionApl, {isError: updateAplError}] = useUpdateInventionAplMutation();
 
-  const HandleUpateCert = async (event) => {
+  const HandleUpateApl = async (event) => {
     const id = defaultValue.id
+
+    console.log('update apl', formData)
 
     if (!validateForm()) {
       // closeModal();  //TODO think about the behaviour
       return;
     }
     try {
-      const updatedCertificate = await updateCopyrightCert({ id, formData }).unwrap()
+      const updatedCertificate = await updateInventionApl({ id, formData }).unwrap()
       setFormData ({
         registration_number: '',
-        title: '',
+        description: '',
         application_date: '',
-        issued_date: '',
-        issued_by: ''
+        application_type: '',
+        organization: '',
+        is_local: true
       })
     
       closeModal();
     } catch (err) {
-      console.log('update_cert_error', err)
+      console.log('update_invention_apl_error', err)
       setErrors(err.data.detail)
     }
   }
@@ -125,8 +131,8 @@ export default function CopyrightCertModal({ closeModal, openModal, defaultValue
           >
             {
               !defaultValue 
-              ? 'Добавление авторского свидетельства:'
-              : 'Редактироание авторского свидетельства:'
+              ? 'Добавление заявки на изобретение:'
+              : 'Редактироание заявки на изобретение:'
             }
           </Typography>
         </DialogTitle>
@@ -156,15 +162,15 @@ export default function CopyrightCertModal({ closeModal, openModal, defaultValue
               </div>
               <div className='form-group mb-3'>
                 <label 
-                  htmlFor="title" 
+                  htmlFor="description" 
                   className='form-label fs-3'
                 >
-                  Название:
+                  Описание:
                 </label>
                 <textarea 
-                  name='title' 
+                  name='description' 
                   className='form-control fs-3' 
-                  value={formData.title} 
+                  value={formData.description} 
                   onChange={handleChange}
                 />
               </div>
@@ -186,31 +192,45 @@ export default function CopyrightCertModal({ closeModal, openModal, defaultValue
               </div>
               <div className='form-group mb-3'>
                 <label 
-                  htmlFor="issued_date"
+                  htmlFor="application_type"
                   className='form-label fs-3'
                 >
-                  Дата выдачи:
+                  Тип заявки:
                 </label>
-                <DatePicker
-                  name='issued_date'
-                  className='float-end'
-                  value={dayjs(formData.issued_date)}
-                  onChange={(newValue) => HadleIssuedDateChange(newValue)}
-                  slotProps={{ textField: { variant: 'outlined' } }}
+                <input 
+                  name='application_type' 
+                  className='form-control fs-3' 
+                  value={formData.application_type} 
+                  onChange={handleChange}
                 />
               </div>
               <div className='form-group'>
                 <label 
-                  htmlFor="issued_by"
+                  htmlFor="organization"
                   className='form-label fs-3'
                 >
-                  Кем выдано:
+                  Организация:
                 </label>
                 <input 
-                  name='issued_by' 
+                  name='organization' 
                   className='form-control fs-3' 
-                  value={formData.issued_by}
+                  value={formData.organization}
                   onChange={handleChange}
+                />
+              </div>
+              <div className='form-group'>
+                <label 
+                  htmlFor="is_local"
+                  className='form-label fs-3'
+                >
+                  Местная:
+                </label>
+                <Checkbox 
+                  name='is_local'
+                  checked={formData.is_local} 
+                  onChange={HadleAplCheckBoxChange}
+                  className='float-end'
+                  sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
                 />
               </div>
             </form>
@@ -225,7 +245,7 @@ export default function CopyrightCertModal({ closeModal, openModal, defaultValue
           <Button 
             variant='outlined'
             size='small'
-            onClick={defaultValue ? HandleUpateCert : HandleAddCert} 
+            onClick={defaultValue ? HandleUpateApl : HandleAddApl} 
             sx={{ 
               fontSize: 14,
               flexGrow: 1
