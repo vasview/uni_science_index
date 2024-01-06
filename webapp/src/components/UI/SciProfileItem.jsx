@@ -1,20 +1,30 @@
 import React from 'react';
 import { Grid, IconButton, Tooltip } from '@mui/material';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import BrowserUpdatedOutlinedIcon from '@mui/icons-material/BrowserUpdatedOutlined';
-import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
 import { useDeleteSciProfileMutation } from '../../features/auth/userApiSlice';
+import { useLazyGetUserPubsBySciProfileQuery } from '../../features/publications/publicationApiSlice';
 
 function SciProfileItem(props) {
   const { item } = props
 
-  const [ DeleteSciProile , { isError }] = useDeleteSciProfileMutation();
+  const [ GetUserPubsBySciProfile, { isError: authPubsError } ] = useLazyGetUserPubsBySciProfileQuery();
+
+  const [ DeleteSciProile, { isError }] = useDeleteSciProfileMutation();
 
   const handleDeleteSciProfile = async(e, value) => {
     e.preventDefault();
 
     const delSciProfile = await DeleteSciProile(e.currentTarget.value)
     console.log('delete_error', isError);
- 
+  }
+
+  const handleGetAuthorPubsByProfile = async(e, value) => {
+    e.preventDefault();
+    console.log('sci_prfile_id', e.currentTarget.value)
+
+    const getAuthorPubs = await GetUserPubsBySciProfile(e.currentTarget.value)
+    console.log('getAuthPubs_error', authPubsError);
   }
 
   return (
@@ -41,7 +51,7 @@ function SciProfileItem(props) {
               marginRight: 3
             }}
             value={item.id}
-            // onClick={navigateLogOut}
+            onClick={handleGetAuthorPubsByProfile}
           >
             <BrowserUpdatedOutlinedIcon fontSize="large"/>
           </IconButton>
@@ -58,7 +68,7 @@ function SciProfileItem(props) {
             value={item.id}
             onClick={handleDeleteSciProfile}
           >
-            <HighlightOffOutlinedIcon fontSize="large"/>
+            <HighlightOffIcon fontSize="large"/>
           </IconButton>
         </Tooltip>
         {/* {item.id} */}

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Select from 'react-select'
 import { useDispatch } from 'react-redux';
 import { Container, Grid } from '@mui/material';
+import PlaylistAddSharpIcon from '@mui/icons-material/PlaylistAddSharp';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Loading } from '../../components/UI/Loading';
@@ -121,8 +122,8 @@ const ScientificProfile = () => {
               variant='contained'
               size='small'
               type='submit'
-              // component={Link}
-              // to={'/edit_profile/`{myProfile[0].id}`'}
+              color='success'
+              startIcon={<PlaylistAddSharpIcon />}
               sx={{ 
                 fontSize: 14,
                 flexGrow: 1

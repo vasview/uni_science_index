@@ -8,7 +8,7 @@ import MyProfile from '../pages/MyProfile/MyProfile';
 import MyProfileEdit from '../pages/MyProfile/MyProfileEdit';
 import Employees from '../pages/Employees/Employees';
 import ScientificProfile from '../pages/ScientificProfile/ScientificProfile';
-import ScientificProfileEdit from '../pages/ScientificProfile/ScientificProfileEdit';
+// import ScientificProfileEdit from '../pages/ScientificProfile/ScientificProfileEdit';
 import MyGestLectures from '../pages/MyGestLectures';
 import MyConferences from '../pages/MyConferences';
 import MyPatents from '../pages/MyPatents';
@@ -49,7 +49,7 @@ const RouteTable = () => {
             <Route path="my_profile" element={<MyProfile />} />
             <Route path="edit_profile/:id" element={<MyProfileEdit />} />
             <Route path="my_sci_profile" element={<ScientificProfile />} />
-            <Route path="my_sci_profile/:id" element={<ScientificProfileEdit />} />
+            {/* <Route path="my_sci_profile/:id" element={<ScientificProfileEdit />} /> */}
             <Route path="my_employees" element={<Employees />} />
             <Route path="my_guest_lectures" element={<MyGestLectures />} />
             <Route path="my_conferences" element={<MyConferences />} />
