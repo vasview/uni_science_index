@@ -341,14 +341,14 @@ function Header() {
                 component={Link}
                 to='/my_copyright_certificates'
               >
-                Получение авторских свидетельств
+                Авторские свидетельства
               </MenuItem>
               <MenuItem 
                 sx={{fontSize: 20}}
                 component={Link}
                 to='/my_inventions'
               >
-                Заявка на изобретение
+                Заявки на изобретение
               </MenuItem>
               <MenuItem 
                 sx={{fontSize: 20}}
