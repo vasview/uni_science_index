@@ -1,0 +1,38 @@
+[
+  {
+      "model": "registers.researchdataBase",
+      "pk": 1,
+      "fields": {
+          "name": "ORCID",
+          "url": "https://https://orcid.org/",
+          "request_param": null,
+          "description": "ORCID",
+          "sort": 1,
+          "active": "True"
+      }
+  },
+  {
+      "model": "registers.researchdataBase",
+      "pk": 2,
+      "fields": {
+        "name": "Scopus",
+        "url": "https://www.scopus.com/authid/detail.uri",
+        "request_param": "?authorId=",
+        "description": "Scopus",
+        "sort": 2,
+        "active": "True"
+      }
+  },
+  {
+      "model": "registers.researchdataBase",
+      "pk": 3,
+      "fields": {
+        "name": "Google Scholar",
+        "url": "https://scholar.google.com/citations",
+        "request_param": "?user=",
+        "description": "Google Scholar",
+        "sort": 3,
+        "active": "True"
+      }
+  }
+]

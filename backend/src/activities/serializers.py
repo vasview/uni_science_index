@@ -6,3 +6,17 @@ class CopyrightCertificateSerializer(serializers.ModelSerializer):
     model = CopyrightCertificate
     fields = '__all__'
     read_only_fields = ('user',) 
+
+
+class InventionApplicationSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = InventionApplication
+    fields = '__all__'
+    read_only_fields = ('user',)
+
+
+class InventionApplicationSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = InventionApplication
+    fields = '__all__'
+    read_only_fields = ('user',)

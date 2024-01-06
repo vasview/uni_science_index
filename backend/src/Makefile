@@ -48,6 +48,12 @@ rollback_all_migrations:
 	${PYTHON} ${MANAGE} migrate ${APP_ACTIVITIES} zero
 	${PYTHON} ${MANAGE} migrate ${APP_PUBLICATIONS} zero
 
+# db_drop:
+#   echo 'DROP DATABASE uni_science_index;' | ${MANAGE} dbshell
+
+# db_create:
+#   echo 'CREATE DATABASE my_project_development;' | ./manage.py dbshell
+
 delete_migrations:
 	find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
 	find . -path "*/migrations/*.pyc"  -delete
@@ -59,14 +65,15 @@ static:
 	${PYTHON} ${MANAGE} collectstatic
 
 load_data:
-	${PYTHON} ${MANAGE} loaddata ${FIXTURE}/faculty.json
-	${PYTHON} ${MANAGE} loaddata ${FIXTURE}/department.json
 	${PYTHON} ${MANAGE} loaddata ${FIXTURE}/academic_degree.json
 	${PYTHON} ${MANAGE} loaddata ${FIXTURE}/academic_title.json
+	${PYTHON} ${MANAGE} loaddata ${FIXTURE}/research_database.json
+# ${PYTHON} ${MANAGE} loaddata ${FIXTURE}/faculty.json
+# ${PYTHON} ${MANAGE} loaddata ${FIXTURE}/department.json
 #	${PYTHON} ${MANAGE} loaddata ${FIXTURE}/country.json
 # 	${PYTHON} ${MANAGE} loaddata ${FIXTURE}/menu_items.json
 #	${PYTHON} ${MANAGE} loaddata ${FIXTURE}/groups.json
 
-clean:
+clean:2
 	find . -type f -name *.pyc -delete
 	find . -type d -name __pycache__ -delete

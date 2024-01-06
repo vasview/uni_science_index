@@ -110,11 +110,13 @@ class InventionApplication(models.Model):
         return self.registration_number
 
 class InventionPatent(models.Model):
-    invention_application = models.ForeignKey(InventionApplication, on_delete=models.CASCADE)
-    number                = models.CharField(max_length=255, null=False, blank=False)
-    issued_date           = models.DateField(null=False, blank=False)
-    valid_to              = models.DateField(null=False, blank=False)    
-    patent_type           = models.CharField(max_length=255, null=True, blank=True) 
+    user                = models.ForeignKey(User, on_delete=models.CASCADE)
+    description         = models.TextField(blank=True, null=True)
+    number              = models.CharField(max_length=255, null=False, blank=False)
+    issued_date         = models.DateField(null=False, blank=False)
+    valid_to            = models.DateField(null=False, blank=False)    
+    patent_type         = models.CharField(max_length=255, null=True, blank=True) 
+    is_local            = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Патент на изобретение'
