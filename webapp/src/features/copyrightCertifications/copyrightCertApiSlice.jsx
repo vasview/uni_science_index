@@ -30,7 +30,7 @@ export const copyrightCertApiSlie = apiSlice.injectEndpoints({
     }),
     deleteCopyrightCert: builder.mutation({
       query: (id) => ({
-        url: `/activities/copyright_certificates/${id}`,
+        url: `/activities/copyright_certificates/${id}/`,
         method: 'DELETE'
       }),
       invalidatesTags: ['CopyrightCerts'],
