@@ -4,7 +4,13 @@ export const registerApiSlie = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getGSPublications: builder.query({
       query: () => ({
-        url: 'publications/gscholar_pubs/',
+        url: '/publications/gscholar_pubs/',
+        method: 'GET'
+      })
+    }),
+    getUserPubsBySciProfile: builder.query({
+      query: (sci_profile_id) => ({
+        url: `/publications/by_author_account/${sci_profile_id}`,
         method: 'GET'
       })
     }),
@@ -13,4 +19,6 @@ export const registerApiSlie = apiSlice.injectEndpoints({
 
 export const {
   useGetGSPublicationsQuery,
+  useGetUserPubsBySciProfileQuery,
+  useLazyGetUserPubsBySciProfileQuery,
 } = registerApiSlie
