@@ -1,0 +1,21 @@
+input.MuiInputBase-input {
+  font-size: 18px;
+  padding: 10px;
+}
+
+div.MuiDateCalendar-root {
+  font-size: 14px;
+}
+
+button.MuiPickersDay-root {
+  font-size: 14px;
+}
+
+span.MuiDayCalendar-weekDayLabel {
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+div.MuiPickersCalendarHeader-label {
+  font-size: 16px;
+}
