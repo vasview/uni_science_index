@@ -31,10 +31,10 @@ const Login = () => {
     setErrMsg('')
   }, [email, password]);
 
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
+  // const [formData, setFormData] = useState({
+  //   email: '',
+  //   password: ''
+  // });
 
   const HandleSubmit = async (e) => {
     e.preventDefault();
