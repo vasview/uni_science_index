@@ -49,3 +49,18 @@ class InventionPatentViewSet(viewsets.ModelViewSet):
 
   def perform_create(self, serializer):
     serializer.save(user=self.request.user)
+
+
+class ConferenceViewSet(viewsets.ModelViewSet):
+  queryset          = Conference.objects.all()
+  serializer_class  = ConferenceSerializer
+
+  def get_queryset(self):
+    if self.request.method == 'GET':
+      user = self.request.user
+      return self.queryset.filter(user_id = user.id)
+    else:
+      return self.queryset.filter(id=self.kwargs['pk'])
+
+  def perform_create(self, serializer):
+    serializer.save(user=self.request.user)

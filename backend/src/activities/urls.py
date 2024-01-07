@@ -7,5 +7,6 @@ router = DefaultRouter()
 router.register(r'copyright_certificates', CopyrightCertificateViewSet)
 router.register(r'invention_applications', InventionApplicationViewSet)
 router.register(r'invention_patents', InventionPatentViewSet)
+router.register(r'conferences', ConferenceViewSet)
   
 urlpatterns = router.urls

@@ -20,3 +20,10 @@ class InventionPatentSerializer(serializers.ModelSerializer):
     model = InventionPatent
     fields = '__all__'
     read_only_fields = ('user',)
+
+
+class ConferenceSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Conference
+    fields = '__all__'
+    read_only_fields = ('user',)
