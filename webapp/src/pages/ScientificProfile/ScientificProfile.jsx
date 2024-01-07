@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Select from 'react-select'
+import Select from 'react-select';
 import { useDispatch } from 'react-redux';
 import { Container, Grid } from '@mui/material';
 import PlaylistAddSharpIcon from '@mui/icons-material/PlaylistAddSharp';

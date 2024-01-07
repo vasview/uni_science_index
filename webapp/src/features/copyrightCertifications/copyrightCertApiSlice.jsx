@@ -1,6 +1,6 @@
 import { apiSlice  } from "../../app/api/apiSlice";
 
-export const copyrightCertApiSlie = apiSlice.injectEndpoints({
+export const copyrightCertApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getCopyrightCerts: builder.query({
       query: () => ({
@@ -43,4 +43,4 @@ export const {
   useAddCopyrightCertMutation,
   useDeleteCopyrightCertMutation,
   useUpdateCopyrightCertMutation,
-} = copyrightCertApiSlie
+} = copyrightCertApiSlice

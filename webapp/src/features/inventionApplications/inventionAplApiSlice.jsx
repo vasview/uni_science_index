@@ -1,6 +1,6 @@
 import { apiSlice  } from "../../app/api/apiSlice";
 
-export const inventionAplApiSlie = apiSlice.injectEndpoints({
+export const inventionAplApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getInventionApls: builder.query({
       query: () => ({
@@ -43,4 +43,4 @@ export const {
   useAddInventionAplMutation,
   useDeleteInventionAplMutation,
   useUpdateInventionAplMutation,
-} = inventionAplApiSlie
+} = inventionAplApiSlice

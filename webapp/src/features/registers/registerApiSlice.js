@@ -1,6 +1,6 @@
 import { apiSlice  } from "../../app/api/apiSlice";
 
-export const registerApiSlie = apiSlice.injectEndpoints({
+export const registerApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getResearchDatabase: builder.query({
       query: () => ({
@@ -14,4 +14,4 @@ export const registerApiSlie = apiSlice.injectEndpoints({
 export const {
   useGetResearchDatabaseQuery,
   useLazyGetResearchDatabaseQuery
-} = registerApiSlie
+} = registerApiSlice

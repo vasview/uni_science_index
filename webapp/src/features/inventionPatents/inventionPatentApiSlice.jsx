@@ -1,6 +1,6 @@
 import { apiSlice  } from "../../app/api/apiSlice";
 
-export const inventionPatentApiSlie = apiSlice.injectEndpoints({
+export const inventionPatentApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getInventionPatents: builder.query({
       query: () => ({
@@ -40,4 +40,4 @@ export const {
   useAddInventionPatentMutation,
   useDeleteInventionPatentMutation,
   useUpdateInventionPatentMutation,
-} = inventionPatentApiSlie
+} = inventionPatentApiSlice

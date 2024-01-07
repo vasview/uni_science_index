@@ -1,6 +1,6 @@
 import { apiSlice  } from "../../app/api/apiSlice";
 
-export const userApiSlie = apiSlice.injectEndpoints({
+export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getUser: builder.query({
       query: () => ({
@@ -55,4 +55,4 @@ export const {
   useAddSciProfileMutation,
   useUpdateSciProfileMutation,
   useDeleteSciProfileMutation,
-} = userApiSlie
+} = userApiSlice
