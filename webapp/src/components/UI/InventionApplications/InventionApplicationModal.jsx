@@ -15,7 +15,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useAddInventionAplMutation } from '../../../features/inventionApplications/inventionAplApiSlice';
 import { useUpdateInventionAplMutation } from '../../../features/inventionApplications/inventionAplApiSlice';
-import '../../shareStyle/ModalStyle.css'
+import '../../sharedStyle/ModalStyle.css'
 
 export default function InventionApplicationModal({ closeModal, openModal, defaultValue }) {
 // console.log('defaultValue', defaultValue)

@@ -15,7 +15,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useAddCopyrightCertMutation } from '../../../features/copyrightCertifications/copyrightCertApiSlice';
 import { useUpdateCopyrightCertMutation } from '../../../features/copyrightCertifications/copyrightCertApiSlice';
-import '../../shareStyle/ModalStyle.css'
+import '../../sharedStyle/ModalStyle.css'
 
 export default function CopyrightCertModal({ closeModal, openModal, defaultValue }) {
 // console.log('defaultValue', defaultValue)
