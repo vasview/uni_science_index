@@ -15,8 +15,8 @@ class InventionApplicationSerializer(serializers.ModelSerializer):
     read_only_fields = ('user',)
 
 
-class InventionApplicationSerializer(serializers.ModelSerializer):
+class InventionPatentSerializer(serializers.ModelSerializer):
   class Meta:
-    model = InventionApplication
+    model = InventionPatent
     fields = '__all__'
     read_only_fields = ('user',)

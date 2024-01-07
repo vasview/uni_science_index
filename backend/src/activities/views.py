@@ -20,9 +20,25 @@ class CopyrightCertificateViewSet(viewsets.ModelViewSet):
   def perform_create(self, serializer):
     serializer.save(user=self.request.user)
 
+
 class InventionApplicationViewSet(viewsets.ModelViewSet):
   queryset          = InventionApplication.objects.all()
   serializer_class  = InventionApplicationSerializer
+
+  def get_queryset(self):
+    if self.request.method == 'GET':
+      user = self.request.user
+      return self.queryset.filter(user_id = user.id)
+    else:
+      return self.queryset.filter(id=self.kwargs['pk'])
+
+  def perform_create(self, serializer):
+    serializer.save(user=self.request.user)
+
+
+class InventionPatentViewSet(viewsets.ModelViewSet):
+  queryset          = InventionPatent.objects.all()
+  serializer_class  = InventionPatentSerializer
 
   def get_queryset(self):
     if self.request.method == 'GET':
