@@ -1,6 +1,6 @@
 import { apiSlice  } from "../../app/api/apiSlice";
 
-export const registerApiSlie = apiSlice.injectEndpoints({
+export const registerApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getGSPublications: builder.query({
       query: () => ({
@@ -21,4 +21,4 @@ export const {
   useGetGSPublicationsQuery,
   useGetUserPubsBySciProfileQuery,
   useLazyGetUserPubsBySciProfileQuery,
-} = registerApiSlie
+} = registerApiSlice
