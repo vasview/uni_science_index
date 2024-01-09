@@ -27,3 +27,10 @@ class ConferenceSerializer(serializers.ModelSerializer):
     model = Conference
     fields = '__all__'
     read_only_fields = ('user',)
+
+
+class StaffMobilitySerializer(serializers.ModelSerializer):
+  class Meta:
+    model = StaffMobility
+    fields = '__all__'
+    read_only_fields = ('user',)

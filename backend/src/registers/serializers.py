@@ -30,3 +30,13 @@ class FundSourceSerializer(serializers.ModelSerializer):
     class Meta:
         model = FundSource
         fields = '__all__'
+
+class CountrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Country
+        fields = '__all__'
+
+class CitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = City
+        fields = '__all__'

@@ -22,3 +22,13 @@ class FundSourceProfileViewSet(viewsets.ModelViewSet):
     queryset = FundSource.objects.all()
     serializer_class = FundSourceSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class CountryViewSet(viewsets.ModelViewSet):
+    queryset = Country.objects.all()
+    serializer_class = CountrySerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class CityViewSet(viewsets.ModelViewSet):
+    queryset = City.objects.all()
+    serializer_class = CitySerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
