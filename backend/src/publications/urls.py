@@ -4,12 +4,13 @@ from publications.views import *
 
 router = DefaultRouter()
 
+router.register(r'monographs', MonographPublicationViewSet)
 
+urlpatterns = router.urls
   
-urlpatterns = [ 
+urlpatterns += [ 
     path('by_author_account/<int:sci_profile_id>', 
          AuthorPublications.as_view(), 
          name = 'author_publications'), 
     path('gscholar_pubs/', GScholarPublicationList.as_view())
 ] 
-
