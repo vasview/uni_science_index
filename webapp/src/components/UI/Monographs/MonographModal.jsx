@@ -13,19 +13,17 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useAddInventionPatentMutation } from '../../../features/inventionPatents/inventionPatentApiSlice';
-import { useUpdateInventionPatentMutation } from '../../../features/inventionPatents/inventionPatentApiSlice';
+import { useAddMonographMutation } from '../../../features/monographs/monographApiSlice';
+import { useUpdateMonographMutation } from '../../../features/monographs/monographApiSlice';
 import '../../sharedStyle/ModalStyle.css'
 
-export default function InventionPatentModal({ closeModal, openModal, defaultValue }) {
+export default function MonographModal({ closeModal, openModal, defaultValue }) {
 // console.log('defaultValue', defaultValue)
   const [formData, setFormData] = useState(
     defaultValue || {
-      number: '',
-      description: '',
-      patent_type: '',
-      issued_date: '',
-      valid_to: '',
+      name: '',
+      place: '',
+      publication_date: '',
       is_local: true
     }
   );
@@ -33,24 +31,17 @@ export default function InventionPatentModal({ closeModal, openModal, defaultVal
   const [errors, setErrors] = useState('');
 
   const validateForm = () => {
-    if (formData.number && formData.description
-      && formData.issued_date && formData.valid_to
-      && formData.patent_type) {
+    if (formData.name && formData.place
+      && formData.publication_date) {
         return true;
       } else {
         return false;
       }
   }
 
-  function HandleIssuedDateChange(value) {
+  function HandlePubDateChange(value) {
     setFormData(
-      (prevFormData) => ({...prevFormData,['issued_date']: value.format('YYYY-MM-DD') })
-    )
-  }
-
-  function HandleValidDateChange(value) {
-    setFormData(
-      (prevFormData) => ({...prevFormData,['valid_to']: value.format('YYYY-MM-DD') })
+      (prevFormData) => ({...prevFormData,['publication_date']: value.format('YYYY-MM-DD') })
     )
   }
 
@@ -69,9 +60,9 @@ export default function InventionPatentModal({ closeModal, openModal, defaultVal
     });
   };
 
-  const [addInventionPatent, { isError: addPatentError }] = useAddInventionPatentMutation();
+  const [addMonograph, { isError: addMonographError }] = useAddMonographMutation();
 
-  const HandleAddPatent = async (event) => {
+  const HandleAddMonograph = async (event) => {
     event.preventDefault()
     
     console.log('add patent', formData)
@@ -81,13 +72,11 @@ export default function InventionPatentModal({ closeModal, openModal, defaultVal
       return;
     }
     try {
-      const newInventionPatent = await addInventionPatent(formData).unwrap()
+      const newMonograph = await addMonograph(formData).unwrap()
       setFormData ({
-        number: '',
-        description: '',
-        patent_type: '',
-        issued_date: '',
-        valid_to: '',
+        name: '',
+        place: '',
+        publication_date: '',
         is_local: true
       })
     
@@ -98,31 +87,29 @@ export default function InventionPatentModal({ closeModal, openModal, defaultVal
     }
   }
 
-  const [updatePatent, {isError: updatePatentError}] = useUpdateInventionPatentMutation();
+  const [updateMonograph, {isError: updatePatentError}] = useUpdateMonographMutation();
 
-  const HandleUpatePatent = async (event) => {
+  const HandleUpateMonograph = async (event) => {
     const id = defaultValue.id
 
-    console.log('update patent', formData)
+    console.log('update monograph', formData)
 
     if (!validateForm()) {
       // closeModal();  //TODO think about the behaviour
       return;
     }
     try {
-      const updatedPatent = await updatePatent({ id, formData }).unwrap()
+      const updatedMonograph = await updateMonograph({ id, formData }).unwrap()
       setFormData ({
-        number: '',
-        description: '',
-        patent_type: '',
-        issued_date: '',
-        valid_to: '',
+        name: '',
+        place: '',
+        publication_date: '',
         is_local: true
       })
     
       closeModal();
     } catch (err) {
-      console.log('update_patent_error', err)
+      console.log('update_monograph_error', err)
       setErrors(err.data.detail)
     }
   }
@@ -137,8 +124,8 @@ export default function InventionPatentModal({ closeModal, openModal, defaultVal
           >
             {
               !defaultValue 
-              ? 'Добавление патента на изобретение:'
-              : 'Редактироание патента на изобретение:'
+              ? 'Добавление публикации монографии:'
+              : 'Редактироание публикации монографии:'
             }
           </Typography>
         </DialogTitle>
@@ -154,73 +141,44 @@ export default function InventionPatentModal({ closeModal, openModal, defaultVal
             <form className='w-100 mx-1 my-1'>
               <div className='form-group mb-1'>
                 <label 
-                  htmlFor="number" 
+                  htmlFor="name" 
                   className='form-label fs-3'
                 >
-                  Регистр. номер:
-                </label>
-                <input 
-                  name='number' 
-                  className='form-control fs-3' 
-                  value={formData.number} 
-                  onChange={handleChange}
-                />
-              </div>
-              <div className='form-group mb-3'>
-                <label 
-                  htmlFor="description" 
-                  className='form-label fs-3'
-                >
-                  Описание:
+                  Название монографии:
                 </label>
                 <textarea 
-                  name='description' 
+                  name='name' 
                   className='form-control fs-3' 
-                  value={formData.description} 
+                  value={formData.name} 
                   onChange={handleChange}
                 />
               </div>
               <div className='form-group mb-3'>
                 <label 
-                  htmlFor="patent_type"
+                  htmlFor="place" 
                   className='form-label fs-3'
                 >
-                  Тип патента:
+                  Издание:
                 </label>
                 <input 
-                  name='patent_type' 
+                  name='place' 
                   className='form-control fs-3' 
-                  value={formData.patent_type} 
+                  value={formData.place} 
                   onChange={handleChange}
                 />
               </div>
               <div className='form-group mb-5'>
                 <label 
-                  htmlFor="issued_date" 
+                  htmlFor="publication_date" 
                   className='form-label fs-3'
                 >
-                  Дата выдачи:
+                  Дата публикации:
                 </label>
                 <DatePicker 
-                  name='issued_date'
+                  name='publication_date'
                   className='float-end'
-                  value={dayjs(formData.issued_date)}
-                  onChange={(newValue) => HandleIssuedDateChange(newValue)}
-                  slotProps={{ textField: { variant: 'outlined' } }}
-                />
-              </div>
-              <div className='form-group mb-5'>
-                <label 
-                  htmlFor="valid_to" 
-                  className='form-label fs-3'
-                >
-                  Дата окончания:
-                </label>
-                <DatePicker 
-                  name='valid_to'
-                  className='float-end'
-                  value={dayjs(formData.valid_to)}
-                  onChange={(newValue) => HandleValidDateChange(newValue)}
+                  value={dayjs(formData.publication_date)}
+                  onChange={(newValue) => HandlePubDateChange(newValue)}
                   slotProps={{ textField: { variant: 'outlined' } }}
                 />
               </div>
@@ -229,7 +187,7 @@ export default function InventionPatentModal({ closeModal, openModal, defaultVal
                   htmlFor="is_local"
                   className='form-label fs-3'
                 >
-                  Местная:
+                  Местное:
                 </label>
                 <Checkbox 
                   name='is_local'
@@ -251,7 +209,7 @@ export default function InventionPatentModal({ closeModal, openModal, defaultVal
           <Button 
             variant='outlined'
             size='small'
-            onClick={defaultValue ? HandleUpatePatent : HandleAddPatent} 
+            onClick={defaultValue ? HandleUpateMonograph : HandleAddMonograph} 
             sx={{ 
               fontSize: 14,
               flexGrow: 1
