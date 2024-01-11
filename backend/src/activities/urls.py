@@ -9,5 +9,6 @@ router.register(r'invention_applications', InventionApplicationViewSet)
 router.register(r'invention_patents', InventionPatentViewSet)
 router.register(r'conferences', ConferenceViewSet)
 router.register(r'guest_lectures', StaffMobilityViewSet)
+router.register(r'thesis_defences', ThesisDefenceViewSet)
   
 urlpatterns = router.urls

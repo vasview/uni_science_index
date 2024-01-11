@@ -34,3 +34,10 @@ class StaffMobilitySerializer(serializers.ModelSerializer):
     model = StaffMobility
     fields = '__all__'
     read_only_fields = ('user',)
+
+
+class ThesisDefenceSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = ThesisDefence
+    fields = '__all__'
+    read_only_fields = ('user',)
