@@ -41,13 +41,13 @@ export default function CopyrightCertModal({ closeModal, openModal, defaultValue
       }
   }
 
-  function HadleIssuedDateChange(value) {
+  function HandleIssuedDateChange(value) {
     setFormData(
       (prevFormData) => ({ ...prevFormData,['issued_date']: value.format('YYYY-MM-DD') })
     )
   }
 
-  function HadleAplDateChange(value) {
+  function HandleAplDateChange(value) {
     setFormData(
       (prevFormData) => ({...prevFormData,['application_date']: value.format('YYYY-MM-DD') })
     )
@@ -180,7 +180,7 @@ export default function CopyrightCertModal({ closeModal, openModal, defaultValue
                   id='copyright_apl_date'
                   className='float-end'
                   value={dayjs(formData.application_date)}
-                  onChange={(newValue) => HadleAplDateChange(newValue)}
+                  onChange={(newValue) => HandleAplDateChange(newValue)}
                   slotProps={{ textField: { variant: 'outlined' } }}
                 />
               </div>
@@ -195,7 +195,7 @@ export default function CopyrightCertModal({ closeModal, openModal, defaultValue
                   name='issued_date'
                   className='float-end'
                   value={dayjs(formData.issued_date)}
-                  onChange={(newValue) => HadleIssuedDateChange(newValue)}
+                  onChange={(newValue) => HandleIssuedDateChange(newValue)}
                   slotProps={{ textField: { variant: 'outlined' } }}
                 />
               </div>
