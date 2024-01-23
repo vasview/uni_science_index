@@ -138,7 +138,7 @@ export default function InventionPatentModal({ closeModal, openModal, defaultVal
             {
               !defaultValue 
               ? 'Добавление патента на изобретение:'
-              : 'Редактироание патента на изобретение:'
+              : 'Редактирование патента на изобретение:'
             }
           </Typography>
         </DialogTitle>

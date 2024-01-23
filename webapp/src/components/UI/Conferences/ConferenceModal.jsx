@@ -128,7 +128,7 @@ export default function ConferenceModal({ closeModal, openModal, defaultValue })
             {
               !defaultValue 
               ? 'Добавление семинара и конференции:'
-              : 'Редактироание семинара и конференции:'
+              : 'Редактирование семинара и конференции:'
             }
           </Typography>
         </DialogTitle>

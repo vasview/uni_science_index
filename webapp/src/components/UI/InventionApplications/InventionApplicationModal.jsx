@@ -132,7 +132,7 @@ export default function InventionApplicationModal({ closeModal, openModal, defau
             {
               !defaultValue 
               ? 'Добавление заявки на изобретение:'
-              : 'Редактироание заявки на изобретение:'
+              : 'Редактирование заявки на изобретение:'
             }
           </Typography>
         </DialogTitle>

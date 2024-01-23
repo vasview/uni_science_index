@@ -126,7 +126,7 @@ export default function CopyrightCertModal({ closeModal, openModal, defaultValue
             {
               !defaultValue 
               ? 'Добавление авторского свидетельства:'
-              : 'Редактироание авторского свидетельства:'
+              : 'Редактирование авторского свидетельства:'
             }
           </Typography>
         </DialogTitle>

@@ -130,7 +130,7 @@ export default function ThesisDefenceModal({ closeModal, openModal, defaultValue
             {
               !defaultValue 
               ? 'Добавление диссертации:'
-              : 'Редактироание диссертации:'
+              : 'Редактирование диссертации:'
             }
           </Typography>
         </DialogTitle>

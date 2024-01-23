@@ -125,7 +125,7 @@ export default function MonographModal({ closeModal, openModal, defaultValue }) 
             {
               !defaultValue 
               ? 'Добавление публикации монографии:'
-              : 'Редактироание публикации монографии:'
+              : 'Редактирование публикации монографии:'
             }
           </Typography>
         </DialogTitle>

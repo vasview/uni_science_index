@@ -136,7 +136,7 @@ export default function GuestLectureModal({ closeModal, openModal, defaultValue 
             {
               !defaultValue 
               ? 'Добавление гостевой лекции и семинара:'
-              : 'Редактироание гостевой лекции и семинара:'
+              : 'Редактирование гостевой лекции и семинара:'
             }
           </Typography>
         </DialogTitle>

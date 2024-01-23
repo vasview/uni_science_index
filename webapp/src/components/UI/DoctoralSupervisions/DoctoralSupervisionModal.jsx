@@ -149,7 +149,7 @@ export default function DoctoralSupervisionModal({ closeModal, openModal, defaul
             {
               !defaultValue 
               ? 'Добавление аспиратна/докторанта:'
-              : 'Редактироание аспиратна/докторанта:'
+              : 'Редактирование аспиратна/докторанта:'
             }
           </Typography>
         </DialogTitle>
