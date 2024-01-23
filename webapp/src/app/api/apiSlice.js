@@ -39,7 +39,7 @@ export const apiSlice = createApi({
   reducerPath: 'api',
   tagTypes: ['SciProfiles', 'CopyrightCerts', 'InventionApls',
             'InventionPatents', 'Conferences', 'GuestLectures', 
-            'MonographPubs'],
+            'MonographPubs', 'DoctoralWorks', 'StudentWorks'],
   baseQuery: baseQueryWithReauth,
   endpoints: builder => ({})
 })
