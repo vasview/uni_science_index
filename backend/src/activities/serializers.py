@@ -48,3 +48,10 @@ class DoctoralResearchSupervisionSerializer(serializers.ModelSerializer):
     model = DoctoralResearchSupervision
     fields = '__all__'
     read_only_fields = ('user', 'std_fullname',)
+
+
+class StudentResearchSupervisionSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = StudentResearchSupervision
+    fields = '__all__'
+    read_only_fields = ('user', 'std_fullname',)
