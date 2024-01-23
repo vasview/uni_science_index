@@ -14,3 +14,11 @@ export const ThesisDefenceStatus = [
   { value: 3, label: 'готово' },
   { value: 4, label: 'защитил' }
 ]
+
+export const DoctoralResearchStatus = [
+  { value: 1, label: 'приступил' },
+  { value: 2, label: 'в процессе' },
+  { value: 3, label: 'завершил' },
+  { value: 4, label: 'проистановил' },
+  { value: 5, label: 'защитил' }
+]
