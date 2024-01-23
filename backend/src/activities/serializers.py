@@ -41,3 +41,10 @@ class ThesisDefenceSerializer(serializers.ModelSerializer):
     model = ThesisDefence
     fields = '__all__'
     read_only_fields = ('user',)
+
+
+class DoctoralResearchSupervisionSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = DoctoralResearchSupervision
+    fields = '__all__'
+    read_only_fields = ('user', 'std_fullname',)

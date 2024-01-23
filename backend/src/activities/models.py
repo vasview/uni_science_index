@@ -1,18 +1,19 @@
 from django.db import models
+import datetime
 
 from accounts.models import User
 from registers.models import FundSource, City
 
 
 class ProjectRole(models.IntegerChoices):
-    EXECUTOR = 1, 'испольнитель' 
-    MANAGER = 5, 'руководитель'
+    EXECUTOR    = 1, 'испольнитель' 
+    MANAGER     = 5, 'руководитель'
 
 class ThesisDefenceStatus(models.IntegerChoices):
-    NEW = 1, 'приступил'
-    INPROGRESS = 2,  'в процессе'
-    DONE = 3, 'готово'
-    FINISHED = 4, 'защитил'
+    NEW         = 1, 'приступил'
+    INPROGRESS  = 2,  'в процессе'
+    DONE        = 3, 'готово'
+    FINISHED    = 4, 'защитил'
 
 class ConferenceParticipationType(models.IntegerChoices):
     REPORT = 1, 'доклад'
@@ -20,7 +21,14 @@ class ConferenceParticipationType(models.IntegerChoices):
 
 class MobilityActivityType(models.IntegerChoices):
     LECTURE = 1, 'гостевая лекция'
-    EXTERN = 2, 'стажировка'
+    EXTERN  = 2, 'стажировка'
+
+class DoctoralResearchStatus(models.IntegerChoices):
+    NEW         = 1, 'приступил'
+    INPROGRESS  = 2, 'в процессе'
+    FINISHED    = 3, 'завершил'
+    SUSPENDED   = 4, 'проистановил'
+    DEFENDED    = 5, 'защитил'
 
 class ThesisDefence(models.Model):
     user                = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -46,9 +54,10 @@ class DoctoralResearchSupervision(models.Model):
     std_last_name       = models.CharField(max_length=100, null=False)
     std_fullname        = models.CharField(max_length=255, null=False)
     admition_date       = models.DateField(null=False)
-    expected_end_year   = models.SmallIntegerField()
-    expected_end_month  = models.SmallIntegerField()
+    expected_end_date   = models.DateField(null=False, default=datetime.date.today)
     real_end_date       = models.DateField(blank=True, null=True)
+    status              = models.IntegerField(choices=DoctoralResearchStatus.choices, 
+                                              default=DoctoralResearchStatus.NEW)
 
     class Meta:
         verbose_name = 'Руководство докторантами и аспирантами'
