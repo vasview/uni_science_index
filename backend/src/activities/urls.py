@@ -12,5 +12,6 @@ router.register(r'guest_lectures', StaffMobilityViewSet)
 router.register(r'thesis_defences', ThesisDefenceViewSet)
 router.register(r'doctoral_supervisions', DoctoralResearchSupervisionViewSet)
 router.register(r'student_supervisions', StudentResearchSupervisionViewSet)
+router.register(r'research_projects', ResearchProjectViewSet)
   
 urlpatterns = router.urls

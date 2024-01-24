@@ -161,3 +161,17 @@ class StudentResearchSupervisionViewSet(viewsets.ModelViewSet):
     full_name = self.make_std_full_name(self.request)
     serializer.save(user=self.request.user, std_fullname=full_name)
     
+
+class ResearchProjectViewSet(viewsets.ModelViewSet):
+  queryset          = ResearchProject.objects.all()
+  serializer_class  = ResearchProjectSerializer
+
+  def get_queryset(self):
+    if self.request.method == 'GET':
+      user = self.request.user
+      return self.queryset.filter(user_id = user.id)
+    else:
+      return self.queryset.filter(id=self.kwargs['pk'])
+
+  def perform_create(self, serializer):
+    serializer.save(user=self.request.user)
