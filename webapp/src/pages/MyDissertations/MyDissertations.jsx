@@ -51,7 +51,7 @@ const MyDissertations = () => {
 
   return (
     <>
-      <Container sx={{ paddingTop: 2 }}>
+      <Container sx={{ paddingTop: 2 }} maxWidth={false}>
         <Grid 
           container 
           spacing={{ xs: 2, md: 3 }} 

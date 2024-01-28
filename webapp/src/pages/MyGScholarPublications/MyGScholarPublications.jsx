@@ -24,7 +24,7 @@ function MyGScholarPublications() {
   }
 
   return (
-    <Container sx={{ paddingTop: 2 }}>
+    <Container sx={{ paddingTop: 2 }} maxWidth={false}>
       <Typography
         variant='h4'
         sx={{ mb: 3, textAlign: 'center' }}

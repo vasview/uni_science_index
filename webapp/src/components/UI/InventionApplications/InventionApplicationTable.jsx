@@ -1,13 +1,13 @@
 import React from 'react'
 import { Grid, IconButton } from '@mui/material'
 import Checkbox from '@mui/material/Checkbox';
-import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
-import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 
 export const InventionApplicationTable = (props) => {
   const { applications, delApplication, editApplication } = props;
   return (
-    <Grid container spacing={2}>
+    <Grid spacing={2}>
       <table className='table table-light'>
         <thead>
           <tr className='text-center'>
@@ -40,23 +40,25 @@ export const InventionApplicationTable = (props) => {
                     edge='end'  
                     aria-label='edit_record'
                     sx={ {  
-                      marginRight: 2
+                      marginRight: 2,
+                      padding: 0
                     }}
                     value={item.id}
                     onClick={() => editApplication(idx)}
                   >
-                    <ModeEditOutlineOutlinedIcon color='warning' fontSize='large'/>
+                    <EditIcon color='warning' fontSize='large'/>
                 </IconButton>
                 <IconButton 
                   edge='end' 
                   aria-label='delete_record'
                   sx={ {  
-                    marginRight: 2
+                    marginRight: 2,
+                    padding: 0
                   }}
                   value={item.id}
                   onClick={delApplication}
                 >
-                  <HighlightOffOutlinedIcon color='error' fontSize='large'/>
+                  <DeleteForeverSharpIcon color='error' fontSize='large'/>
                 </IconButton>
               </td>
             </tr>

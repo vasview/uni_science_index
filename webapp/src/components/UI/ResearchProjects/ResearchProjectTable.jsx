@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, IconButton } from '@mui/material';
-import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
-import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 import { DoctoralResearchStatus, ProjectRole } from '../../../_helpers/Enums';
 
 export const ResearchProjectTable = (props) => {
@@ -14,7 +14,7 @@ export const ResearchProjectTable = (props) => {
   })
 
   return (
-    <Grid container spacing={2}>
+    <Grid spacing={2}>
       <table className='table table-light'>
         <thead>
           <tr className='text-center'>
@@ -49,23 +49,25 @@ export const ResearchProjectTable = (props) => {
                     edge='end'  
                     aria-label='edit_record'
                     sx={ {  
-                      marginRight: 2
+                      marginRight: 2,
+                      padding: 0
                     }}
                     value={item.id}
                     onClick={() => editProject(idx)}
                   >
-                    <ModeEditOutlineOutlinedIcon color='warning' fontSize='large'/>
+                    <EditIcon color='warning' fontSize='large'/>
                 </IconButton>
                 <IconButton 
                   edge='end' 
                   aria-label='delete_record'
                   sx={ {  
-                    marginRight: 2
+                    marginRight: 2,
+                    padding: 0
                   }}
                   value={item.id}
                   onClick={delProject}
                 >
-                  <HighlightOffOutlinedIcon color='error' fontSize='large'/>
+                  <DeleteForeverSharpIcon color='error' fontSize='large'/>
                 </IconButton>
               </td>
             </tr>
