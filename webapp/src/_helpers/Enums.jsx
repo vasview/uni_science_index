@@ -22,3 +22,8 @@ export const DoctoralResearchStatus = [
   { value: 4, label: 'проистановил' },
   { value: 5, label: 'защитил' }
 ]
+
+export const ProjectRole = [
+  { value: 1, label: 'испольнитель' },
+  { value: 2, label: 'руководитель' }
+]
