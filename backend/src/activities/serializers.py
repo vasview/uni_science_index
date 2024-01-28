@@ -61,4 +61,4 @@ class ResearchProjectSerializer(serializers.ModelSerializer):
   class Meta:
     model = ResearchProject
     fields = '__all__'
-    read_only_fields = ('user')
+    read_only_fields = ('user',)
