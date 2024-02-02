@@ -14,7 +14,7 @@ export const ConferenceTable = (props) => {
   })
 
   return (
-    <Grid spacing={2}>
+    <Grid>
       <table className='table table-light'>
         <thead>
           <tr className='text-center'>

@@ -7,7 +7,7 @@ export const CopyrightCertificateTable = (props) => {
   const { certificates, delCertificate, editCertificate } = props;
 
   return (
-    <Grid spacing={2}>
+    <Grid>
       <table className='table table-light'>
         <thead>
           <tr className='text-center align-middle'>

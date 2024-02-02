@@ -7,7 +7,7 @@ import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 export const InventionApplicationTable = (props) => {
   const { applications, delApplication, editApplication } = props;
   return (
-    <Grid spacing={2}>
+    <Grid>
       <table className='table table-light'>
         <thead>
           <tr className='text-center'>

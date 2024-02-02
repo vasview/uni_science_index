@@ -8,7 +8,7 @@ export const MonographTable = (props) => {
   const { monographs, delMonograph, editMonograph } = props;
 
   return (
-    <Grid spacing={2}>
+    <Grid>
       <table className='table table-light'>
         <thead>
           <tr className='text-center'>
