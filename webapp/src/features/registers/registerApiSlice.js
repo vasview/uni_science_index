@@ -8,10 +8,18 @@ export const registerApiSlice = apiSlice.injectEndpoints({
         method: 'GET'
       })
     }),
+    getFundSources: builder.query({
+      query: () => ({
+        url: 'registers/fund_sources/',
+        method: 'GET'
+      })
+    }),
   })
 })
 
 export const {
   useGetResearchDatabaseQuery,
-  useLazyGetResearchDatabaseQuery
+  useLazyGetResearchDatabaseQuery,
+  useGetFundSourcesQuery,
+  useLazyGetFundSourcesQuery
 } = registerApiSlice

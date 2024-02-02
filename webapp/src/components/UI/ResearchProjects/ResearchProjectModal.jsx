@@ -19,8 +19,8 @@ import { ProjectRole } from '../../../_helpers/Enums';
 import '../../sharedStyle/ModalStyle.css'
 
 
-export default function ResearchProjectModal({ closeModal, openModal, defaultValue }) {
-// console.log('defaultValue', defaultValue)
+export default function ResearchProjectModal({ closeModal, openModal, defaultValue, fundSources }) {
+console.log('defaultValue', defaultValue)
   const [formData, setFormData] = useState(
     defaultValue || {
       name: '',
@@ -59,6 +59,14 @@ export default function ResearchProjectModal({ closeModal, openModal, defaultVal
     )
   }
 
+  const getSelectedFund = fundSources.find(i => i.value === formData.fund_source)
+
+  const handleFundSelectOption = (event) => {
+    setFormData(
+      (prevFormData) => ({...prevFormData,['fund_source']: event?.value })
+    )
+  }
+
   function HandleStartDateChange(value) {
     setFormData(
       (prevFormData) => ({...prevFormData,['start_date']: value.format('YYYY-MM-DD') })
@@ -91,7 +99,7 @@ export default function ResearchProjectModal({ closeModal, openModal, defaultVal
   const HandleAddProject = async (event) => {
     event.preventDefault()
     
-    console.log(formData)
+    console.log('reseach_project formData', formData)
     if (!validateForm()) {
       // closeModal();  //TODO think about the behaviour
       return;
@@ -160,7 +168,7 @@ export default function ResearchProjectModal({ closeModal, openModal, defaultVal
             {
               !defaultValue 
               ? 'Добавление научной работы:'
-              : 'Редактирование НИР:'
+              : 'Редактирование научной работы:'
             }
           </Typography>
         </DialogTitle>
@@ -184,7 +192,7 @@ export default function ResearchProjectModal({ closeModal, openModal, defaultVal
                 <textarea 
                   name='name' 
                   className='form-control fs-3' 
-                  value={formData.topic} 
+                  value={formData.name} 
                   onChange={handleChange}
                 />
               </div>
@@ -211,13 +219,22 @@ export default function ResearchProjectModal({ closeModal, openModal, defaultVal
                 >
                   Источник финансирования:
                 </label>
-                <input 
+                <Select
+                  defaultValue={getSelectedFund}
+                  onChange={handleFundSelectOption}
+                  placeholder="Выберите источник" 
+                  className='form-control fs-4'
+                  options={fundSources} 
+                  isClearable={true}
+                />
+                {/* <input 
                   name='fund_source' 
                   className='form-control fs-3' 
                   value={formData.fund_source} 
                   onChange={handleChange}
-                />
+                /> */}
               </div>
+
               <div className='form-group mb-4'>
                 <label 
                   htmlFor="fund_amount"
@@ -278,7 +295,7 @@ export default function ResearchProjectModal({ closeModal, openModal, defaultVal
                   onChange={handleChange}
                 />
               </div>
-              <div className='form-group mb-5'>
+              <div className='form-group mb-3'>
                 <label 
                   htmlFor="start_date" 
                   className='form-label fs-3'
@@ -293,7 +310,7 @@ export default function ResearchProjectModal({ closeModal, openModal, defaultVal
                   slotProps={{ textField: { variant: 'outlined' } }}
                 />
               </div>
-              <div className='form-group mb-5'>
+              <div className='form-group mb-3'>
                 <label 
                   htmlFor="expected_end_date" 
                   className='form-label fs-3'
@@ -309,7 +326,7 @@ export default function ResearchProjectModal({ closeModal, openModal, defaultVal
                   slotProps={{ textField: { variant: 'outlined' } }}
                 />
               </div>
-              <div className='form-group mb-5'>
+              <div className='form-group mb-3'>
                 <label 
                   htmlFor="real_end_date" 
                   className='form-label fs-3'

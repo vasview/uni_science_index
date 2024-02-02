@@ -25,5 +25,5 @@ export const DoctoralResearchStatus = [
 
 export const ProjectRole = [
   { value: 1, label: 'испольнитель' },
-  { value: 2, label: 'руководитель' }
+  { value: 5, label: 'руководитель' }
 ]

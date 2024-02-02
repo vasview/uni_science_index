@@ -7,14 +7,16 @@ import { DoctoralResearchStatus, ProjectRole } from '../../../_helpers/Enums';
 export const ResearchProjectTable = (props) => {
   const { projects, delProject, editProject } = props;
 
-  const ResearchStatus = ((value) => {
+  const roleInProject = ((value) => {
     if (value) {
-      return DoctoralResearchStatus.find(item => item.value === value).label
+      return ProjectRole.find(item => item.value == value).label
     }
   })
 
+  console.log('proejcts', projects)
+
   return (
-    <Grid spacing={2}>
+    <Grid>
       <table className='table table-light'>
         <thead>
           <tr className='text-center'>
@@ -35,8 +37,8 @@ export const ResearchProjectTable = (props) => {
           {projects.map((item, idx) => 
             <tr className='align-middle' key={idx}>
               <td className='fs-4'>{item.name}</td>
-              <td className='fs-4'>{item.role_in_project}</td>
-              <td className='fs-4'>{item.fund_source}</td>
+              <td className='fs-4'>{roleInProject(item.role_in_project)}</td>
+              <td className='fs-4'>{item.fund_name}</td>
               <td className='fs-4'>{item.fund_duration}</td>
               <td className='fs-4'>{item.fund_amount}</td>
               <td className='fs-4'>{item.start_date}</td>

@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Grid, Container  } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import PlaylistAddSharpIcon from '@mui/icons-material/PlaylistAddSharp';
 import Button from '@mui/material/Button';
+import { isFulfilled } from '@reduxjs/toolkit';
 import { Loading } from '../../components/UI/Loading';
 import { useGetResearchProjectsQuery } from '../../features/researchProjects/researchProjectApiSlice';
 import { useDeleteResearchProjectMutation } from '../../features/researchProjects/researchProjectApiSlice';
+import { useLazyGetFundSourcesQuery } from '../../features/registers/registerApiSlice';
 import { ResearchProjectTable } from '../../components/UI/ResearchProjects/ResearchProjectTable';
 import ResearchProjectModal from '../../components/UI/ResearchProjects/ResearchProjectModal';
-
 
 
 const MyResearchWorks = () => {
@@ -19,6 +20,24 @@ const MyResearchWorks = () => {
     isSuccess, 
     isError: projectsError 
   } = useGetResearchProjectsQuery();
+
+  const [fundSources, setFundSources] = useState([]);
+
+  const [getFundSources] = useLazyGetFundSourcesQuery();
+
+  const getFundSourceList = async () => {
+    const fundSourceList = await getFundSources({}).unwrap();
+
+    return fundSourceList.map((item) => ({
+      value: item.id,
+      label: item.name
+    }))
+  };
+
+  useEffect(() => {
+    const Funds = getFundSourceList();
+    Funds.then((res) => {setFundSources(res)})
+  }, [isFulfilled]);
 
   const [openModal, setOpenModal] = useState(false);
 
@@ -94,6 +113,7 @@ const MyResearchWorks = () => {
                 setProjectToEdit(null);
               }}
               defaultValue={projectToEdit !== null && projects[projectToEdit]}
+              fundSources={fundSources}
             />
           }
       </Container>
