@@ -174,4 +174,6 @@ class ResearchProjectViewSet(viewsets.ModelViewSet):
       return self.queryset.filter(id=self.kwargs['pk'])
 
   def perform_create(self, serializer):
+    # user = self.request.user
+    # fund_id = self.request.data['fund_source']
     serializer.save(user=self.request.user)
