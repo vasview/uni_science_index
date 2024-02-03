@@ -63,7 +63,7 @@ const RouteTable = () => {
             <Route path="my_postgraduates" element={<MyPostgraduates />} />
             <Route path="my_resarch_management" element={<MyResearchManagement />} />
             <Route path="my_resarch_works" element={<MyResearchWorks />} />
-            <Route path="my_resarch_summary" element={<MyResearchSummary />} />
+            {/* <Route path="my_resarch_summary" element={<MyResearchSummary />} /> */}
           </Route>
           <Route path="*" element={<NotFound />} /> 
         </Route>

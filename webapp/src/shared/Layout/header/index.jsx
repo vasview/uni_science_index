@@ -268,13 +268,13 @@ function Header() {
               >
                 Научно-исследовательская работы
               </MenuItem>
-              <MenuItem 
+              {/* <MenuItem 
                 sx={{fontSize: 20}}
                 component={Link}
                 to='/my_resarch_summary'
               >
                 Сводка по НИР
-              </MenuItem>
+              </MenuItem> */}
             </Menu>
             {/* Publication submenu */}
             <Menu 
