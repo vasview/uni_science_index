@@ -1,0 +1,50 @@
+[
+  {
+      "model": "registers.fundsource",
+      "pk": 1,
+      "fields": {
+          "code": "Erasmus",
+          "name": "Erasmus"
+      }
+  },
+  {
+      "model": "registers.fundsource",
+      "pk": 2,
+      "fields": {
+          "code": "DAAD",
+          "name": "DAAD"
+      }
+  },
+  {
+      "model": "registers.fundsource",
+      "pk": 3,
+      "fields": {
+          "code": "GIZ",
+          "name": "GIZ"
+      }
+  },
+  {
+      "model": "registers.fundsource",
+      "pk": 4,
+      "fields": {
+          "code": "ЮНЕСКО",
+          "name": "ЮНЕСКО"
+      }
+  },
+  {
+      "model": "registers.fundsource",
+      "pk": 5,
+      "fields": {
+          "code": "МОН",
+          "name": "МОН"
+      }
+  },
+  {
+      "model": "registers.fundsource",
+      "pk": 6,
+      "fields": {
+          "code": "Отраслевой",
+          "name": "Отраслевой"
+      }
+  }
+]
