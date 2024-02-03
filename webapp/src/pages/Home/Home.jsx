@@ -13,7 +13,7 @@ export default function home() {
                         imgTitle='Преподаватель'
                         url='/login'
           />
-          <WelcomeCard  title='Институт'
+          <WelcomeCard  title='Кафедра'
                         imgPath='/images/professor.png' 
                         imgTitle='Институт'
                         url='/login'
