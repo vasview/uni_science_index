@@ -68,6 +68,7 @@ load_data:
 	${PYTHON} ${MANAGE} loaddata ${FIXTURE}/academic_degree.json
 	${PYTHON} ${MANAGE} loaddata ${FIXTURE}/academic_title.json
 	${PYTHON} ${MANAGE} loaddata ${FIXTURE}/research_database.json
+	${PYTHON} ${MANAGE} loaddata ${FIXTURE}/fund_source.json
 # ${PYTHON} ${MANAGE} loaddata ${FIXTURE}/faculty.json
 # ${PYTHON} ${MANAGE} loaddata ${FIXTURE}/department.json
 #	${PYTHON} ${MANAGE} loaddata ${FIXTURE}/country.json
