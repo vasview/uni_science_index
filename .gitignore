@@ -224,3 +224,7 @@ media/
 #react dependencies
 node_modules
 .DS_Store
+
+# Ignore prod config for nginx
+default.conf
+# docker/nginx/dev/default.conf
