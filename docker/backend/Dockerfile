@@ -15,7 +15,7 @@ RUN pip install --upgrade pip
 
 RUN pip install -r /app/backend/requirements.txt
 
-COPY ./docker/backend/entrypoint.sh /app/docker/backend/
+COPY  ./docker /app/docker
 
 COPY ./backend /app/backend
 
