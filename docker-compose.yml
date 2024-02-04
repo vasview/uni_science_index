@@ -32,17 +32,17 @@ services:
     build:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
-      ports:
-        - 80:80
-        - 443:443
-      volumes:
-        - ./docker/nginx/prod:/etc/nginx/conf.d
-        - static_volume:/app/backend/src/staticfiles
-        - media_volume:/app/backend/src/media
-      networks:
-        - my-network
-      depends_on:
-        - backend
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./docker/nginx/prod:/etc/nginx/conf.d
+      - static_volume:/app/backend/src/staticfiles
+      - media_volume:/app/backend/src/media
+    networks:
+      - my-network
+    depends_on:
+      - backend
 
 volumes:
   postgres_data:
