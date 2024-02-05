@@ -26,7 +26,6 @@ body {
   min-height: 200px;
   width: auto;
   background-color: whitesmoke;
-  /* position: relative; */
 }
 
 #main {
@@ -34,9 +33,6 @@ body {
   min-height: calc(100vh - 150px);
   width: auto;
   background-color: whitesmoke;
-  /* border: 1px solid whitesmoke; */
-  /* padding-top: 60px; */
-  /* overflow: hidden; */
 }
 
 .errmsg {
