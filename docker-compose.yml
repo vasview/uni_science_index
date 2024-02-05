@@ -34,7 +34,7 @@ services:
       dockerfile: ./docker/nginx/Dockerfile
     ports:
       - 80:80
-      - 443:443
+      # - 443:443
     volumes:
       - ./docker/nginx/prod:/etc/nginx/conf.d
       - static_volume:/app/backend/src/staticfiles

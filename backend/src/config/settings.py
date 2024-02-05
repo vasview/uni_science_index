@@ -126,29 +126,29 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'staticfiles/'
 
 if DEBUG:
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'dev_static'),
     )
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 CORS_ALLOW_CREDENTIALS = True
+
 # TODO remove when in production
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000", 
     "http://127.0.0.1:3000", 
     "http://localhost:8000",
     "http://127.0.0.1:8000",
-    "http://192.168.88.100",
 ]
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_PRIVATE_NETWORK: True
+# CORS_ALLOW_PRIVATE_NETWORK: True
 CORS_ALLOWED_HEADERS = (
     "accept",
     "authorization",
