@@ -61,7 +61,7 @@ class Profile(models.Model):
         ordering = ['last_name', 'first_name']
 
     def __str__(self):
-        return self.full_name
+        return self.user.email
 
 class ScientificProfile(models.Model):
     user        = models.ForeignKey(User, on_delete=models.CASCADE)
