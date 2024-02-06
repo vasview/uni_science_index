@@ -27,6 +27,8 @@ const MyProfile = () => {
   if (isError) {
     return  <div className='container pt-5 col-md-3'>{JSON.stringify(profileError.data)}</div> 
   }
+
+  console.log('my_profile',myProfile)
   
   if (isSuccess) {
     return (
@@ -52,7 +54,9 @@ const MyProfile = () => {
               </div>
               <div class="row col-sm-12 mb-1">
                   <div class="col_title col-sm-6">Email</div>
-                  <div class="col_value col-sm-6">your_email@test.com</div>
+                  <div class="col_value col-sm-6">
+                  {myProfile[0].user.email}
+                  </div>
               </div>
               <div class="row col-sm-12 mb-1">
                   <div class="col_title col-sm-6">Пол</div>
