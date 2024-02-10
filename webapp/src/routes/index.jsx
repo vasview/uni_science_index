@@ -47,7 +47,7 @@ const RouteTable = () => {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="employees_card" element={<EmployeeCard />} />
             <Route path="my_profile" element={<MyProfile />} />
-            <Route path="edit_profile/:id" element={<MyProfileEdit />} />
+            <Route path="edit_profile" element={<MyProfileEdit />} />
             <Route path="my_sci_profile" element={<ScientificProfile />} />
             {/* <Route path="my_sci_profile/:id" element={<ScientificProfileEdit />} /> */}
             <Route path="my_employees" element={<Employees />} />

@@ -12,7 +12,16 @@ export const userApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: '/accounts/user/profile/',
         method: 'GET'        
-      })  
+      }),
+      providesTags: ['MyProfile'],
+    }),
+    updateUserProfile: builder.mutation({
+      query: ({id, formData}) => ({
+        url: `/accounts/user/profile/${id}/`,
+        method: 'PATCH',
+        body: { ...formData }
+      }),
+      invalidatesTags: ['MyProfile'],
     }),
     getSciProfiles: builder.query({
       query: () => ({
@@ -33,14 +42,14 @@ export const userApiSlice = apiSlice.injectEndpoints({
     }),
     updateSciProfile: builder.mutation({
       query: ({id, sci_profile}) => ({
-        url: `/accounts/user/scientific_profiles/${id}`,
+        url: `/accounts/user/scientific_profiles/${id}/`,
         method: 'PATCH',
         body: sci_profile
       })
     }),
     deleteSciProfile: builder.mutation({
       query: (id) => ({
-        url: `/accounts/user/scientific_profiles/${id}`,
+        url: `/accounts/user/scientific_profiles/${id}/`,
         method: 'DELETE'
       }),
       invalidatesTags: ['SciProfiles'],
@@ -51,6 +60,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
 export const {
   useGetUserQuery, 
   useGetUserProfileQuery, 
+  useUpdateUserProfileMutation,
   useGetSciProfilesQuery, 
   useAddSciProfileMutation,
   useUpdateSciProfileMutation,

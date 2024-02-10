@@ -27,3 +27,9 @@ export const ProjectRole = [
   { value: 1, label: 'испольнитель' },
   { value: 5, label: 'руководитель' }
 ]
+
+export const Gender = [
+  { value: 'NA', label: 'Не задано' },
+  { value: 'M', label: 'Мужчина' },
+  { value: 'F', label: 'Женщина' }
+]

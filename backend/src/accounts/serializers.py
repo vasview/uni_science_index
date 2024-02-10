@@ -28,15 +28,14 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     user = MyUserSerializer(
         many=False,
-        read_only=False,
+        read_only=True
     )
     
     class Meta:
         model = Profile
         fields = ['id', 'first_name', 'middle_name', 'last_name',
-                  'mobile', 'gender','academic_degree', 'academic_title', 
+                  'mobile', 'gender', 'academic_degree', 'academic_title',
                   'user']
-        # extra_fields = ['academic_degree']
 
 class ScientificProfileSerializer(serializers.ModelSerializer):
     research_db_name = serializers.ReadOnlyField(source='research_db.name')

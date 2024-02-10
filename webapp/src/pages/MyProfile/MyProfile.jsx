@@ -1,13 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import { Container } from '@mui/material'
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { Link } from 'react-router-dom';
 import { Loading } from '../../components/UI/Loading'
 import { useGetUserProfileQuery } from '../../features/auth/userApiSlice' 
+import { Gender } from '../../_helpers/Enums';
 import './MyProfile.css'
 
 const MyProfile = () => {
+  const navigate = useNavigate();
+
   const { data: myProfile, 
           isLoading, 
           isFetching,
@@ -28,7 +30,11 @@ const MyProfile = () => {
     return  <div className='container pt-5 col-md-3'>{JSON.stringify(profileError.data)}</div> 
   }
 
-  console.log('my_profile',myProfile)
+  const genderWord = ((value) => {
+    if (value) {
+      return Gender.find(item => item.value == value).label
+    }
+  })
   
   if (isSuccess) {
     return (
@@ -60,7 +66,7 @@ const MyProfile = () => {
               </div>
               <div class="row col-sm-12 mb-1">
                   <div class="col_title col-sm-6">Пол</div>
-                  <div class="col_value col-sm-6">{myProfile[0].gender}</div>
+                  <div class="col_value col-sm-6">{genderWord(myProfile[0].gender)}</div>
               </div>
               <div class="row col-sm-12 mb-1">
                   <div class="col_title col-sm-6">Кафедра</div>
@@ -78,8 +84,7 @@ const MyProfile = () => {
                 <Button
                   variant='contained'
                   size='small'
-                  component={Link}
-                  to={'/edit_profile/`{myProfile[0].id}`'}
+                  onClick={ () => {navigate('/edit_profile/')} }
                   sx={{ 
                     fontSize: 14,
                     flexGrow: 1
