@@ -78,7 +78,7 @@ const MyProfileEdit = () => {
     return (
       <Container sx={{ paddingTop: 2 }}>
         <Grid container spacing={2} sx={{ paddingTop: 2 }}>
-          <Grid item xs={2}>
+          <Grid item xs={4}>
             <Button
               variant='outlined'
               size='small'
@@ -103,7 +103,7 @@ const MyProfileEdit = () => {
             Редактирование моего профиля:
             </Typography>
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={8} >
               <form className='w-100 mx-1 my-1'>
                 <div className='form-group mb-3'>
                   <label 
@@ -152,7 +152,7 @@ const MyProfileEdit = () => {
                     htmlFor="mobile" 
                     className='form-label fs-3 w-30'
                   >
-                    Номер мобильного:
+                    Номер телефона:
                   </label>
                   <input 
                     name='mobile' 
@@ -161,10 +161,10 @@ const MyProfileEdit = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <div>
+                <div className='text-center'>
                   <Button 
                     variant='contained'
-                    size='small'
+                    // size='small'
                     onClick={handleSubmit} 
                     sx={{ 
                       fontSize: 14,

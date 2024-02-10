@@ -1,11 +1,11 @@
 import React from 'react'
+import { Grid, Container } from '@mui/material';
+import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
-import { Container } from '@mui/material'
 import Button from '@mui/material/Button';
 import { Loading } from '../../components/UI/Loading'
 import { useGetUserProfileQuery } from '../../features/auth/userApiSlice' 
 import { Gender } from '../../_helpers/Enums';
-import './MyProfile.css'
 
 const MyProfile = () => {
   const navigate = useNavigate();
@@ -39,61 +39,183 @@ const MyProfile = () => {
   if (isSuccess) {
     return (
       <>
-        <Container>
-          <div class="main_block_section col-sm-6 mb-3">
-              <h3 class="fs-4 col-sm-12 text-uppercase">Мой профиль</h3>
-              <div class="row col-sm-12 mb-1">
-                  <div class="col_title col-sm-6">Фамилия</div>
-                  <div class="col_value col-sm-6">{myProfile[0].last_name}</div>
-              </div>
-              <div class="row col-sm-12 mb-1">
-                  <div class="col_title col-sm-6">Имя</div>
-                  <div class="col_value col-sm-6">{myProfile[0].first_name}</div>
-              </div>
-              <div class="row col-sm-12 mb-1">
-                  <div class="col_title col-sm-6">Отчество</div>
-                  <div class="col_value col-sm-6">{myProfile[0].middle_name}</div>
-              </div>
-              <div class="row col-sm-12 mb-1">
-                  <div class="col_title col-sm-6">Номер телефона</div>
-                  <div class="col_value col-sm-6">{myProfile[0].mobile}</div>
-              </div>
-              <div class="row col-sm-12 mb-1">
-                  <div class="col_title col-sm-6">Email</div>
-                  <div class="col_value col-sm-6">
-                  {myProfile[0].user.email}
-                  </div>
-              </div>
-              <div class="row col-sm-12 mb-1">
-                  <div class="col_title col-sm-6">Пол</div>
-                  <div class="col_value col-sm-6">{genderWord(myProfile[0].gender)}</div>
-              </div>
-              <div class="row col-sm-12 mb-1">
-                  <div class="col_title col-sm-6">Кафедра</div>
-                  <div class="col_value col-sm-6"></div>
-              </div>
-              <div class="row col-sm-12 mb-1">
-                  <div class="col_title col-sm-6">Ученое звание</div>
-                  <div class="col_value col-sm-6"></div>
-              </div>
-              <div class="row col-sm-12 mb-1">
-                  <div class="col_title col-sm-6">Ученая степень</div>
-                  <div class="col_value col-sm-6"></div>
-              </div>
-              <div class="col-10 mb-2">
-                <Button
-                  variant='contained'
-                  size='small'
-                  onClick={ () => {navigate('/edit_profile/')} }
-                  sx={{ 
-                    fontSize: 14,
-                    flexGrow: 1
-                  }}
-                >
-                  Редактировать
-                </Button>
-              </div>
-          </div>
+        <Container sx={{ paddingTop: 2 }} maxWidth={false}>
+        <Grid 
+          container 
+          spacing={{ xs: 2, md: 3 }} 
+        >
+          <Grid item xs={10}>
+            <Typography
+              variant='h4'
+              sx={{ mb: 3, textAlign: 'center' }}
+            >
+              Мой профиль
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid 
+          container 
+          spacing={{ xs: 2, md: 1 }} 
+        >
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'right', paddingRight: 2 }}
+            >
+              Фамилия:
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'left' }}
+            >
+              {myProfile[0].last_name}
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'right',paddingRight: 2 }}
+            >
+              Имя:
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'left' }}
+            >
+              {myProfile[0].first_name}
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'right',paddingRight: 2 }}
+            >
+              Отчество:
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'left' }}
+            >
+              {myProfile[0].middle_name}
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'right',paddingRight: 2 }}
+            >
+              Номер телефона:
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'left' }}
+            >
+              {myProfile[0].mobile}
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'right',paddingRight: 2 }}
+            >
+              Email:
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'left' }}
+            >
+              {myProfile[0].user.email}
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'right',paddingRight: 2 }}
+            >
+              Пол:
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'left' }}
+            >
+              {genderWord(myProfile[0].gender)}
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'right',paddingRight: 2 }}
+            >
+              Кафедра:
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'left' }}
+            >
+ 
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'right',paddingRight: 2 }}
+            >
+              Ученое звание:
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'left' }}
+            >
+ 
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'right',paddingRight: 2 }}
+            >
+              Ученая степень:
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant='h4'
+              sx={{ textAlign: 'left' }}
+            >
+ 
+            </Typography>
+          </Grid>
+          <Grid item xs={10} sx={{ textAlign: 'center' }}>
+            <Button
+              variant='contained'
+              // size='small'
+              onClick={ () => {navigate('/edit_profile/')} }
+              sx={{ 
+                fontSize: 14,
+                flexGrow: 1
+              }}
+              className='text-center'
+            >
+              Редактировать
+            </Button>
+          </Grid>
+        </Grid>
           {/* <div class="col-10 mb-2">
               <div class="d-flex justify-content-between">
                   <a href="{% url 'profiles:password_change' %}" class="btn btn-primary col-4">Сменить пароль</a>
