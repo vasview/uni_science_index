@@ -15,3 +15,7 @@ router.register(r'student_supervisions', StudentResearchSupervisionViewSet)
 router.register(r'research_projects', ResearchProjectViewSet)
   
 urlpatterns = router.urls
+
+urlpatterns += [ 
+    path('student_research_list/', StudentResearchSupervisionList.as_view({'get': 'list'}))
+] 

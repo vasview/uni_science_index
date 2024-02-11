@@ -76,3 +76,18 @@ class MonographPublicationViewSet(viewsets.ModelViewSet):
 
   def perform_create(self, serializer):
     serializer.save(user=self.request.user)
+
+
+class StudentResearchPubViewSet(viewsets.ModelViewSet):
+  queryset          = StudentResearchPublication.objects.all()
+  serializer_class  = StudentResearchPubSerializer
+
+  def get_queryset(self):
+    if self.request.method == 'GET':
+      user = self.request.user
+      return self.queryset.filter(user_id = user.id)
+    else:
+      return self.queryset.filter(id=self.kwargs['pk'])
+
+  def perform_create(self, serializer):
+    serializer.save(user=self.request.user)

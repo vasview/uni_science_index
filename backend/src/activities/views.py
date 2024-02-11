@@ -160,6 +160,15 @@ class StudentResearchSupervisionViewSet(viewsets.ModelViewSet):
   def perform_update(self, serializer):
     full_name = self.make_std_full_name(self.request)
     serializer.save(user=self.request.user, std_fullname=full_name)
+
+
+class StudentResearchSupervisionList(viewsets.ReadOnlyModelViewSet):
+  queryset          = StudentResearchSupervision.objects.all()
+  serializer_class  = StudentResearchSupervisionShortSerializer
+
+  def get_queryset(self):
+    user = self.request.user
+    return self.queryset.filter(user_id = user.id)
     
 
 class ResearchProjectViewSet(viewsets.ModelViewSet):

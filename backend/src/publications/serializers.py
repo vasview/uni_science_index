@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from .models import *
+from activities.serializers import StudentResearchSupervisionShortSerializer
 
 class GScholarPublicationSerializer(serializers.ModelSerializer):
   class Meta: 
@@ -15,3 +16,12 @@ class MonographPublicationSerializer(serializers.ModelSerializer):
     model = MonographPublication
     fields = '__all__'
     read_only_fields = ('user',)
+
+
+class StudentResearchPubSerializer(serializers.ModelSerializer):
+  student_work_title = serializers.ReadOnlyField(source='student_research.topic')
+
+  class Meta:
+    model = StudentResearchPublication
+    fields = '__all__'
+    read_only_fields = ('user', 'student_work_title',)

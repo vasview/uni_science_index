@@ -57,6 +57,12 @@ class StudentResearchSupervisionSerializer(serializers.ModelSerializer):
     read_only_fields = ('user', 'std_fullname',)
 
 
+class StudentResearchSupervisionShortSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = StudentResearchSupervision
+    fields = ['id', 'topic', 'year']
+
+
 class ResearchProjectSerializer(serializers.ModelSerializer):
   fund_name = serializers.ReadOnlyField(source='fund_source.name')
 

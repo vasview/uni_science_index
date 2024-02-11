@@ -5,6 +5,7 @@ from publications.views import *
 router = DefaultRouter()
 
 router.register(r'monographs', MonographPublicationViewSet)
+router.register(r'student_research_works', StudentResearchPubViewSet)
 
 urlpatterns = router.urls
   
