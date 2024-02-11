@@ -298,7 +298,7 @@ function Header() {
               <MenuItem 
                 sx={{fontSize: 20}}
                 component={Link}
-                to='/my_research_publications'
+                to='/my_student_research_pubs'
               > 
                 Публикации по итогам НИРС
               </MenuItem>

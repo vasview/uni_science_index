@@ -15,7 +15,7 @@ import MyPatents from '../pages/MyPatents';
 import MyInventions from '../pages/MyInventions';
 import MyCopyrightCertificates from '../pages/MyCopyrightCertificates';
 import MyMonographPublications from '../pages/MyMonographPublications';
-import MyResearchPublications from '../pages/MyResearchPublications';
+import MyStudentResearchPublications from '../pages/MyStudentResearchPublications';
 import MyGScholarPublications from '../pages/MyGScholarPublications';
 import MyDissertations from '../pages/MyDissertations';
 import MyPostgraduates from '../pages/MyPostgraduates';
@@ -57,7 +57,7 @@ const RouteTable = () => {
             <Route path="my_inventions" element={<MyInventions />} />
             <Route path="my_copyright_certificates" element={<MyCopyrightCertificates />} />
             <Route path="my_monograph_publications" element={<MyMonographPublications />} />
-            <Route path="my_research_publications" element={<MyResearchPublications />} />
+            <Route path="my_student_research_pubs" element={<MyStudentResearchPublications />} />
             <Route path="my_gscholar_publications" element={<MyGScholarPublications />} />
             <Route path="my_dissertations" element={<MyDissertations />} />
             <Route path="my_postgraduates" element={<MyPostgraduates />} />

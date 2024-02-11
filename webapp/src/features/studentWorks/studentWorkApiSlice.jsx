@@ -32,6 +32,13 @@ export const studentWorkApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ['StudentWorks'],
     }),
+    getStudentResearchWorkList: builder.query({
+      query: () => ({
+        url: '/activities/student_research_list/',
+        method: 'GET'
+      }),
+      providesTags: ['StudentWorks'],
+    }),
   })
 })
 
@@ -40,4 +47,6 @@ export const {
   useAddStudentWorkMutation,
   useDeleteStudentWorkMutation,
   useUpdateStudentWorkMutation,
+  useGetStudentResearchWorkListQuery,
+  useLazyGetStudentResearchWorkListQuery,
 } = studentWorkApiSlice
