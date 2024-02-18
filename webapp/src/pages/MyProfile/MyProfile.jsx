@@ -18,6 +18,8 @@ const MyProfile = () => {
          error: profileError 
     } = useGetUserProfileQuery();
 
+    console.log('myProfile', myProfile);
+
   if (isLoading || isFetching) {
     return ( 
       <div className='container pt-5 col-md-3'>
@@ -182,7 +184,7 @@ const MyProfile = () => {
               variant='h4'
               sx={{ textAlign: 'left' }}
             >
- 
+              {myProfile[0].academic_title_obj.label}
             </Typography>
           </Grid>
           <Grid item xs={5}>
@@ -198,7 +200,7 @@ const MyProfile = () => {
               variant='h4'
               sx={{ textAlign: 'left' }}
             >
- 
+              {myProfile[0].academic_degree_obj.label}
             </Typography>
           </Grid>
           <Grid item xs={10} sx={{ textAlign: 'center' }}>

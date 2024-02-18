@@ -14,6 +14,18 @@ export const registerApiSlice = apiSlice.injectEndpoints({
         method: 'GET'
       })
     }),
+    getAcademicTitles: builder.query({
+      query: () => ({
+        url: 'registers/academic_titles/',
+        method: 'GET'
+      })
+    }),
+    getAcademicDegrees: builder.query({
+      query: () => ({
+        url: 'registers/academic_degrees/',
+        method: 'GET'
+      })
+    })
   })
 })
 
@@ -21,5 +33,9 @@ export const {
   useGetResearchDatabaseQuery,
   useLazyGetResearchDatabaseQuery,
   useGetFundSourcesQuery,
-  useLazyGetFundSourcesQuery
+  useLazyGetFundSourcesQuery,
+  useGetAcademicTitlesQuery,
+  useLazyGetAcademicTitlesQuery,
+  useGetAcademicDegreesQuery,
+  useLazyGetAcademicDegreesQuery
 } = registerApiSlice
