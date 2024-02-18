@@ -26,7 +26,7 @@ class GoogleScholarPublication(models.Model):
         return self.title
     
 class StudentResearchPublication(models.Model):
-    user                = models.ForeignKey(User, on_delete=models.CASCADE, default=User.objects.all().first().id)
+    user                = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     student_research    = models.ForeignKey(StudentResearchSupervision, on_delete=models.CASCADE)
     name                = models.CharField(max_length=255, null=False)
     place               = models.CharField(max_length=255, null=True, blank=True)
