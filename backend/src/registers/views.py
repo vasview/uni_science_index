@@ -5,12 +5,12 @@ from .serializers import *
 
 class AcademicDegreeViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = AcademicDegree.objects.all()
-    serializer_class = AcademicDegreeSerializer
+    serializer_class = AcademicDegreeRestrictedSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class AcademicTitleViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = AcademicTitle.objects.all()
-    serializer_class = AcademicTitleSerializer
+    serializer_class = AcademicTitleSRestrictederializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class ResearchDataBaseViewSet(viewsets.ModelViewSet):

@@ -1,20 +1,34 @@
 from rest_framework import serializers
 from .models import *
 
-class AcademicDegreeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AcademicDegree
-        fields = '__all__'
-
 class AcademicDegreeRestrictedSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AcademicDegree
-        fields = ['id', 'name']
+    value = serializers.SerializerMethodField('_get_degree_value')
+    label = serializers.SerializerMethodField('_get_degree_label')
 
-class AcademicTitleSerializer(serializers.ModelSerializer):
+    def _get_degree_value(self, obj):
+        return obj.id
+    
+    def _get_degree_label(self, obj):
+        return obj.name
+    
     class Meta:
         model = AcademicDegree
-        fields = '__all__'
+        fields = ['value', 'label']
+
+class AcademicTitleSRestrictederializer(serializers.ModelSerializer):
+    value = serializers.SerializerMethodField('_get_title_value')
+    label = serializers.SerializerMethodField('_get_title_label')
+
+    def _get_title_value(self, obj):
+        return obj.id
+    
+    def _get_title_label(self, obj):
+        return obj.name
+
+    class Meta:
+        model = AcademicTitle
+        fields = ['value', 'label']
+        
 
 class ResearchDataBaseSerializer(serializers.ModelSerializer):
     class Meta:

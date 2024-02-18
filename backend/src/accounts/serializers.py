@@ -21,10 +21,26 @@ class MyUserSerializer(serializers.ModelSerializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    academic_degree = serializers.PrimaryKeyRelatedField(
-        source='academic_degree.id',
-        read_only=True
-    )
+    academic_title_obj = serializers.SerializerMethodField('_get_title_obj')
+    academic_degree_obj = serializers.SerializerMethodField('_get_degree_obj')
+    
+    def _get_title_obj(self, obj):
+        if obj.academic_title_id:
+            academic_title = AcademicTitle.objects.get(id = obj.academic_title_id)
+            return AcademicTitleSRestrictederializer(academic_title, 
+                                                    many=False,
+                                                    read_only=True).data
+        else:
+            return {"value": None, "label": None}
+
+    def _get_degree_obj(self, obj):
+        if obj.academic_degree_id:
+            academic_degree = AcademicDegree.objects.get(id = obj.academic_degree_id)
+            return AcademicDegreeRestrictedSerializer(academic_degree, 
+                                                      many=False,
+                                                      read_only=True).data
+        else:
+            return {"value": None, "label": None}
 
     user = MyUserSerializer(
         many=False,
@@ -35,7 +51,8 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ['id', 'first_name', 'middle_name', 'last_name',
                   'mobile', 'gender', 'academic_degree', 'academic_title',
-                  'user']
+                   'academic_title_obj', 'academic_degree_obj', 'user']
+
 
 class ScientificProfileSerializer(serializers.ModelSerializer):
     research_db_name = serializers.ReadOnlyField(source='research_db.name')
