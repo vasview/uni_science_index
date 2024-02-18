@@ -3,19 +3,26 @@
         "model": "registers.academictitle",
         "pk": 1,
         "fields": {
-            "name": "доцент"
+            "name": "Не задано"
         }
     },
     {
         "model": "registers.academictitle",
         "pk": 2,
         "fields": {
-            "name": "профессор"
+            "name": "доцент"
         }
     },
     {
         "model": "registers.academictitle",
         "pk": 3,
+        "fields": {
+            "name": "профессор"
+        }
+    },
+    {
+        "model": "registers.academictitle",
+        "pk": 4,
         "fields": {
             "name": "академик"
         }
