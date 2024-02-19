@@ -14,7 +14,7 @@ class AcademicTitleViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class ResearchDataBaseViewSet(viewsets.ModelViewSet):
-    queryset = ResearchDataBase.objects.all()
+    queryset = ResearchDataBase.objects.filter(active=True)
     serializer_class = ResearchDataBaseSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
