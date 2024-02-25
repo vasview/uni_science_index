@@ -202,6 +202,10 @@ class ResearchResultInfo(models.Model):
     research_project_count  = models.SmallIntegerField(null=True, blank=True)
     doctoral_research_count = models.SmallIntegerField(null=True, blank=True)
     monograph_pub_count     = models.SmallIntegerField(null=True, blank=True)
+    patent_count            = models.SmallIntegerField(null=True, blank=True)
+    invitation_apl_count    = models.SmallIntegerField(null=True, blank=True)
+    cpw_certificate_count   = models.SmallIntegerField(null=True, blank=True)
+    thesis_defence_count    = models.SmallIntegerField(null=True, blank=True)
 
     class Meta:
         verbose_name = 'Сводка по НИР'
