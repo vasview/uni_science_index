@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
 function DashboardCard(props) {
-  const { title, number, link } = props;
+  const { title, quantity, front_link } = props;
 
   return (
     <Grid item xs={6} sm={4} md={3}>
@@ -26,7 +26,7 @@ function DashboardCard(props) {
             color="text.secondary"
             sx={{ fontStyle: 'italic' }}
           >
-            Кол-во: {number}
+            Кол-во: {quantity}
           </Typography>
         </CardContent>
         <CardActions>
@@ -34,7 +34,7 @@ function DashboardCard(props) {
             variant='contained'
             size="small"
             component={Link}
-            to={link}
+            to={front_link}
             sx={{ 
               fontSize: 14,
               flexGrow: 1
