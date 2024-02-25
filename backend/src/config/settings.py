@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'organization',
     'activities',
     'publications',
+    'kpis',
 ]
 
 MIDDLEWARE = [

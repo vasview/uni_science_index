@@ -1,0 +1,112 @@
+[
+  {
+      "model": "kpis.indicatorregister",
+      "pk": 1,
+      "fields": {
+          "title": "Гостевые лекции и стажировки",
+          "front_link": "/my_guest_lectures",
+          "src_model": "ResearchResultInfo",
+          "src_field": "mobility_count"
+      }
+  },
+  {
+      "model": "kpis.indicatorregister",
+      "pk": 2,
+      "fields": {
+          "title": "Семинары и конференции",
+          "front_link": "/my_conferences",
+          "src_model": "ResearchResultInfo",
+          "src_field": "conference_count"
+      }
+  },
+  {
+      "model": "kpis.indicatorregister",
+      "pk": 3,
+      "fields": {
+          "title": "Рук-во докторантами, аспирантов",
+          "front_link": "/my_postgraduates",
+          "src_model": "ResearchResultInfo",
+          "src_field": "doctoral_research_count"
+      }
+  },
+  {
+      "model": "kpis.indicatorregister",
+      "pk": 4,
+      "fields": {
+          "title": "Защита диссертаций",
+          "front_link": "/my_dissertations",
+          "src_model": "ResearchResultInfo",
+          "src_field": "thesis_defence_count"
+      }
+  },
+  {
+    "model": "kpis.indicatorregister",
+    "pk": 5,
+    "fields": {
+        "title": "Руководство НИРС",
+        "front_link": "/my_resarch_management",
+        "src_model": "ResearchResultInfo",
+        "src_field": "std_research_count"
+    }
+  },
+  {
+    "model": "kpis.indicatorregister",
+    "pk": 6,
+    "fields": {
+        "title": "Научно исследовательская работа",
+        "front_link": "/my_resarch_works",
+        "src_model": "ResearchResultInfo",
+        "src_field": "research_project_count"
+    }
+  },
+  {
+    "model": "kpis.indicatorregister",
+    "pk": 7,
+    "fields": {
+        "title": "Публикация по итокам НИРС",
+        "front_link": "/my_research_publications",
+        "src_model": "ResearchResultInfo",
+        "src_field": "std_research_pub_count"
+    }
+  },
+  {
+    "model": "kpis.indicatorregister",
+    "pk": 8,
+    "fields": {
+        "title": "Публикация монографий'",
+        "front_link": "/my_monograph_publications",
+        "src_model": "ResearchResultInfo",
+        "src_field": "monograph_pub_count"
+    }
+  },
+  {
+    "model": "kpis.indicatorregister",
+    "pk": 9,
+    "fields": {
+        "title": "Получено авторских свидетельств",
+        "front_link": "/my_copyright_certificates",
+        "src_model": "ResearchResultInfo",
+        "src_field": "cpw_certificate_count"
+    }
+  },
+  {
+    "model": "kpis.indicatorregister",
+    "pk": 10,
+    "fields": {
+        "title": "Заявки на изобретения",
+        "front_link": "/my_inventions",
+        "src_model": "ResearchResultInfo",
+        "src_field": "invitation_apl_count"
+    }
+  },
+  {
+    "model": "kpis.indicatorregister",
+    "pk": 11,
+    "fields": {
+        "title": "Патенты на изобретения",
+        "front_link": "/my_patents",
+        "src_model": "ResearchResultInfo",
+        "src_field": "patent_count"
+    }
+  }
+]

@@ -14,6 +14,7 @@ api_urlpatterns = [
     path('publications/', include('publications.urls')),
     path('organization/', include('organization.urls')),
     path('registers/', include('registers.urls')),
+    path('kpis/', include('kpis.urls')),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     # path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
